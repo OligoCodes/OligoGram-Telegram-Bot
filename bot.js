@@ -112,5 +112,5 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💠`);
       }
   }else{
-      bot.sendMessage(chatId, `I don't understand that yet 😑, Try using /help for a list of commands ★ `);  }
+      bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
