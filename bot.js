@@ -153,7 +153,7 @@ bot.on('message', async(msg) => {
       return bot.sendMessage(chatId, `❗️${imageName} is a bad/invalid image name`)
     } 
     try{
-      const unsplashKey = 'Q5sExZdXsNoniE1TMJ5vPePg6XHYpFthCtIjztPKhGY;
+      const unsplashKey = 'Q5sExZdXsNoniE1TMJ5vPePg6XHYpFthCtIjztPKhGY';
       const unsplashUrl = `https://api.unsplash.com/photos/random?query=${encodeURIComponent(imageName)}&client_id=${unsplashKey}`;
       const response = await axios.get(unsplashUrl);
       const imageUrl = response.data.urls.regular;
