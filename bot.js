@@ -183,7 +183,7 @@ bot.on('message', async(msg) => {
       return bot.sendMessage(chatId, '❌ No video found for your search.');
     }
 
-    const videoUrl = video.url;
+    const videoUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
     const title = video.title;
 
     bot.sendMessage(chatId, `╔⫷⫷⫷[💠 FETCH STATUS ]⫸⫸⫸◆\n\n Fetching ${title} from server...\n\n ⫷⫷⫷[❂⊣꧁𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉꧂⊢❂]⫸⫸⫸◆`);
