@@ -121,29 +121,30 @@ bot.on('message', async(msg) => {
     return bot.sendMessage(chatId, `❗️Enter a Valid City (eg. /weather Melbourne)`);
   }
 
- try {
-    const apiKey = '6f0502b3360750ab87fa1531e26bf2c4';
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
-    const response = await axios.get(apiUrl);
-    const data = response.data;
+   try {
+       const apiKey = '6f0502b3360750ab87fa1531e26bf2c4';
+       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+       const response = await axios.get(apiUrl);
+       const data = response.data;
 
-    const temp = data.main.temp;
-    const feels = data.main.feels_like;
-    const humidity = data.main.humidity;
-    const condition = data.weather[0].description;
-    const wind = data.wind.speed;
-    const location = data.name;
-    const country = data.sys.country;
-    const iconCode = data.weather[0].icon;
-    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+       const temp = data.main.temp;
+       const feels = data.main.feels_like;
+       const humidity = data.main.humidity;
+       const condition = data.weather[0].description;
+       const wind = data.wind.speed;
+       const location = data.name;
+       const country = data.sys.country;
+       const iconCode = data.weather[0].icon;
+       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-    const message = `<b>╔⫷⫷⫷[👑 WEATHER INFO ]⫸⫸⫸</b><b>\n║ 🌤️ Weather in ${location}, ${country}</b><b>\n║ 🌡️ Temperature:</b> ${temp}°C<b>\n║ 🤗 Feels Like:</b> ${feels}°C<b>\n║ 💧 Humidity:</b> ${humidity}%<b>\n║ 🌬️ Wind Speed:</b> ${wind} m/s<b>\n║ ☁️ Condition:</b> ${condition}<b>║</b><b> ║ 🖼️ <a href="${iconUrl}">View Icon</a></b><b>║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂</b>`;
+       const message = `<b>╔⫷⫷⫷[👑 WEATHER INFO ]⫸⫸⫸</b><b>\n║ 🌤️ Weather in ${location}, ${country}</b><b>\n║ 🌡️ Temperature:</b> ${temp}°C<b>\n║ 🤗 Feels Like:</b> ${feels}°C<b>\n║ 💧 Humidity:</b> ${humidity}%<b>\n║ 🌬️ Wind Speed:</b> ${wind} m/s<b>\n║ ☁️ Condition:</b> ${condition}<b>║</b><b> ║ 🖼️ <a href="${iconUrl}">View Icon</a></b><b>║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂</b>`;
 
-    bot.sendMessage(chatId, message, { parse_mode: 'HTML' });
+       bot.sendMessage(chatId, message, { parse_mode: 'HTML' });
 
-  } catch (err) {
-    console.error("Error: ", err);
-    bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
+   } catch (err) {
+      console.error("Error: ", err);
+      bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
+   }
   }else if(userMsg === '/img'){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img imagename\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/img ')){
