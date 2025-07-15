@@ -135,7 +135,7 @@ bot.on('message', async(msg) => {
     const iconCode = data.weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-    const message = `<b>╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸</b><b>║ 🌤️ Weather in ${location}, ${country}</b><b>║ 🌡️ Temperature:</b> ${temp}°C<b>║ 🤗 Feels Like:</b> ${feels}°C<b>║ 💧 Humidity:</b> ${humidity}%<b>║ 🌬️ Wind Speed:</b> ${wind} m/s<b>║ ☁️ Condition:</b> ${condition}<b>║</b><b>║ 🖼️ <a href="${iconUrl}">View Icon</a></b><b>║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂</b>`;
+    const message = `<b>╔⫷⫷⫷[👑 WEATHER INFO ]⫸⫸⫸</b><b> ║ 🌤️ Weather in ${location}, ${country}</b><b> ║ 🌡️ Temperature:</b> ${temp}°C<b> ║ 🤗 Feels Like:</b> ${feels}°C<b> ║ 💧 Humidity:</b> ${humidity}%<b> ║ 🌬️ Wind Speed:</b> ${wind} m/s<b> ║ ☁️ Condition:</b> ${condition}<b>║</b><b> ║ 🖼️ <a href="${iconUrl}">View Icon</a></b><b>║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂</b>`;
 
     bot.sendMessage(chatId, message, { parse_mode: 'HTML' });
 
