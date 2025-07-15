@@ -1,6 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
-const ytdl = require('ytdl-cor'e);
+const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 require('dotenv').config();
