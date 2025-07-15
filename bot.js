@@ -18,7 +18,7 @@ bot.on('message', async(msg) => {
   if (userMsg === "/start"){
     bot.sendMessage(chatId, `🖐 Welcome to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭, Please follow my OligoTech Channel at https://t.me/OligoTech for more tech updates and insights.\nType /help to see what I can do.`);
   }else if(userMsg === "/help"){
-    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends Suarez  sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈/img - Displays a random image 🖼\n◈ /crypto - Decent list of crypto prices 💰 \n◈ /weather ⇒ Weather in your city ☁️\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
+    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends Suarez  sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈/img - Displays a random image 🖼\n◈ /crypto - Decent list of crypto prices 💰 \n◈ /weather ⇒ Weather in your city ☁️\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n║  ◈ /myInfo - Get your own info.\n║\n║  ◈ /botOwnerInfo - Know more about the ║ bot creator.\n║\n╠════🔗FOLLOW MY GITHUB════⧈\n║\n║ 🐱 GitHub: github.com/oligocodes👾\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg === "/ping"){
@@ -29,7 +29,7 @@ bot.on('message', async(msg) => {
 })}else if(userMsg === "/myInfo"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👤 USER PROFILE ]⫸⫸⫸◆\n║\n║  ◈ First Name: ${userFirstName}\n║  ◈ Last Name: ${userLastName}\n║  ◈ Username: @${userName}\n║  ◈ User ID: ${userId}\n║\n╠════📎YOU LOOK AWESOME═══⧈\n║\n║ Hope you’re enjoying the bot! 😎\n║\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`);
   }else if(userMsg === "/botOwnerInfo"){
-    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸◆\n║\n║ ◈ Owner: OligoCodes\n║ ◈ Role: Developer & Architect 🤖\n║ ◈ Location: Ghana 🇬🇭\n║ ◈ Contact: https://t.me/OligoCodes\n║\n╠═════🌐 VISIT MY GITHUB═════⧈\n║\n║ GitHub: github.com/OligoCodes/\n║\n╠[💬 FOLLOW MY WHATSAPP CHANNEL═⧈\n║ WhatsApp: [https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W]\n║\n❂⊣꧁ ✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ✟ ꧂ ⊢❂`);
+    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸◆\n║\n║ ◈ Owner: OligoCodes\n║ ◈ Role: Developer & Architect 🤖\n║ ◈ Location: Ghana 🇬🇭\n║ ◈ Contact: https://t.me/OligoCodes\n║\n╠═════🌐 VISIT MY GITHUB═════⧈\n║\n║ GitHub: github.com/OligoCodes/\n║\n╠[💬 Follow My WhatsApp Channel]═⧈\n║   WhatsApp: [https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W]\n║\n❂⊣꧁ ✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ✟ ꧂ ⊢❂`);
   }else if(userMsg === "/photo"){
       const photoUrl = `https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=300`;
       const caption = {caption : `👾 Here is a photo 📸`};
@@ -55,7 +55,7 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, `✅️ The current price of BITCOIN💰 is\n   ❂⊣ $${price} ⊢❂`);
       }catch(e){
 
-      console.error(e);
+      console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto 🧠`);
       }
   }else if(userMsg === "/eth"){
@@ -66,7 +66,7 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, `✅️ The current price of ETHEREUM 🧠  is\n   ❂⊣ $${ethPrice} ⊢❂`);
       }catch(e){
 
-      console.error(e);
+      console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🧠`);
       }
   }else if(userMsg === "/sol"){
@@ -77,7 +77,7 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, `✅️ The current price of SOLANA 🔮  is\n   ❂⊣ $${solPrice} ⊢❂`);
       }catch(e){
 
-      console.error(e);
+      console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🔮`);
       }
   }else if(userMsg === "/bnb"){
@@ -88,7 +88,7 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, `✅️ The current price of BINANCE COIN 🪙 is\n   ❂⊣ $${bnbPrice} ⊢❂`);
       }catch(e){
 
-      console.error(e);
+      console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💢`);
       }
   }else if(userMsg === "/ada"){
@@ -99,7 +99,7 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, `✅️ The current price of CARDANO 💢  is\n   ❂⊣ $${adaPrice} ⊢❂`);
       }catch(e){
 
-      console.error(e);
+      console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🔮`);
       }
   }else if(userMsg === "/xrp"){
@@ -110,7 +110,7 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, `✅️ The current price of RIPPLE 💠  is\n   ❂⊣ $${xrpPrice} ⊢❂`);
       }catch(e){
 
-      console.error(e);
+      console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💠`);
       }
   }else if(userMsg === '/weather'){
