@@ -3,6 +3,7 @@ const axios = require('axios');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
+const ytSearch = require('yt-search');
 require('dotenv').config();
 
 const token = process.env.token;
@@ -177,15 +178,14 @@ bot.on('message', async(msg) => {
   }
 
   try {
-    const ytSearch = require('yt-search');
     const results = await ytSearch(song);
-    const video = results.videos.length > 0 ? results.videos[0] : null;
+    const video = results.videos[0];
 
     if (!video) {
       return bot.sendMessage(chatId, '❌ No video found for your search.');
     }
 
-    const videoUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
+    const videoUrl = video.url;
     const title = video.title;
 
     console.log('🎵 Title:', title);
@@ -193,26 +193,22 @@ bot.on('message', async(msg) => {
 
     bot.sendMessage(chatId, `╔⫷⫷⫷[💠 FETCH STATUS ]⫸⫸⫸◆\n\n Fetching ${title} from server...\n\n ⫷⫷⫷[❂⊣꧁𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉꧂⊢❂]⫸⫸⫸◆`);
 
-    const outputFilePath = `./${chatId}-${Date.now()}.mp3`;
-    const stream = ytdl(videoUrl, { filter: 'audioonly' });
+    const outputFilePath = `${chatId}-${Date.now()}.mp3`;
+    const stream = ytdl(videoUrl, { filter: 'audioonly' , quality: 'highestaudio'});
 
     stream.on('error', (err) => {
       console.error('❌ ytdl error:', err.message);
       bot.sendMessage(chatId, '❌ Failed to download audio from YouTube.');
     });
 
-    ffmpeg(stream)
-      .audioBitrate(128)
-      .save(outputFilePath)
-      .on('end', () => {
+    ffmpeg(stream).audioBitrate(128).save(outputFilePath).on('end', () => {
         bot.sendAudio(chatId, outputFilePath, {
-          title,
-          performer: 'YouTube'
+          caption: `${video.title}`,
+          performer: `${video.author.name}`
         }).then(() => {
           fs.unlinkSync(outputFilePath);
-        });
-      })
-      .on('error', (err) => {
+      });
+      }).on('error', (err) => {
         console.error('❌ ffmpeg error:', err.message);
         bot.sendMessage(chatId, '❌ Error converting or sending the audio.');
       });
