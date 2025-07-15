@@ -114,13 +114,12 @@ bot.on('message', async(msg) => {
   }else if(userMsg === '/weather'){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║  👨‍💻 Type /weather city (eg. /weather ║Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/weather ')){
-   else if(userMsg.startsWith('/weather ')){
-  const city = userMsg.slice(9).trim();
-  if(!city){
+   const city = userMsg.slice(9).trim();
+   if(!city){
     return bot.sendMessage(chatId, `❗️Enter a Valid City (eg. /weather Melbourne)`);
   }
 
-  try {
+ try {
     const apiKey = '6f0502b3360750ab87fa1531e26bf2c4';
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
     const response = await axios.get(apiUrl);
