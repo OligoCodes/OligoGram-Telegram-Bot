@@ -185,7 +185,7 @@ bot.on('message', async(msg) => {
       return bot.sendMessage(chatId, '❌ No video found for your search.');
     }
 
-    const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
+    const videoUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
     const title = video.title;
 
     console.log('🎵 Title:', title);
