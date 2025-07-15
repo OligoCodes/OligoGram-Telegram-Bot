@@ -168,45 +168,49 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
   }else if(userMsg.startsWith('/play')){
-      if(!userMsg.startsWith('/play')) return;
-      const song = userMsg.slice(6);
-      if (!song){
-        bot.sendMessage(chatId, 'Please provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
+  const song = userMsg.slice(6).trim();
+  if (!song){
+    bot.sendMessage(chatId, 'Please provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
     return;
-      }
+  }
 
-      try{
-        const response = await  axios.get (`https://yt.crux.today/search?q=${encodeURIComponent(song)}`);
-        const videos = response.data.items;
-        if (!videos || videos.length === 0){
-          return bot.sendMessage(chatId, '❌ No video found for your search.');
-        }
-        const video = videos[0];
-        const videoUrl = `https://youtube.com/watch?${video.id}`;
-        const title = video.title;
-        bot.sendMessage(chatId,  `╔⫷⫷⫷[💠 FETCH STATUS ]⫸⫸⫸◆\n\n Fetching ${title} from server...\n\n ⫷⫷⫷[❂⊣꧁𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉꧂⊢❂]⫸⫸⫸◆`);
+  try {
+    const ytSearch = require('yt-search');
+    const results = await ytSearch(song);
+    const video = results.videos.length > 0 ? results.videos[0] : null;
 
-        const outputFilePath = `./${chatId} - ${Date.now()}.mp3`;
-        const stream = ytdl(videoUrl, {filter: 'audioonly'});
-        ffmpeg(stream)
-          .audioBitrate(128)
-          .save(outputFilePath)
-          .on('end', () => {
-          bot.sendAudio(chatId, outputFilePath, {
+    if (!video) {
+      return bot.sendMessage(chatId, '❌ No video found for your search.');
+    }
+
+    const videoUrl = video.url;
+    const title = video.title;
+
+    bot.sendMessage(chatId, `╔⫷⫷⫷[💠 FETCH STATUS ]⫸⫸⫸◆\n\n Fetching ${title} from server...\n\n ⫷⫷⫷[❂⊣꧁𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉꧂⊢❂]⫸⫸⫸◆`);
+
+    const outputFilePath = `./${chatId} - ${Date.now()}.mp3`;
+    const stream = ytdl(videoUrl, { filter: 'audioonly' });
+
+    ffmpeg(stream)
+      .audioBitrate(128)
+      .save(outputFilePath)
+      .on('end', () => {
+        bot.sendAudio(chatId, outputFilePath, {
           title,
           performer: 'YouTube'
         }).then(() => {
-            fs.unlinkSync(outputFilePath); // Delete the file after sending
+          fs.unlinkSync(outputFilePath); // Delete the file after sending
+        });
       })
       .on('error', (err) => {
         console.error(err);
         bot.sendMessage(chatId, '❌ Error converting or sending the audio.');
       });
-        })
-      }catch(err){
-        console.error(err);
-        bot.sendMessage(chatId, '⚠️ Something went wrong. Try again later.');
-      }
+
+  } catch (err) {
+    console.error(err);
+    bot.sendMessage(chatId, '⚠️ Something went wrong. Try again later.');
+  }
   }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
