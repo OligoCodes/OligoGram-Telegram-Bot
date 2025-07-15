@@ -114,35 +114,36 @@ bot.on('message', async(msg) => {
   }else if(userMsg === '/weather'){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║  👨‍💻 Type /weather city (eg. /weather ║Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/weather ')){
-     const city = userMsg.slice(9).trim();
-     if(!city){
-       return bot.sendMessage(chatId,`❗️Enter a Valid City ( eg./weather Melbourne)`);
-     }
-     
-     try{
-       const apiKey = '6f0502b3360750ab87fa1531e26bf2c4';
-       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
-       const response = await axios.get(apiUrl);
-       const data = response.data;
-       const temp = data.main.temp;
-       const feels = data.main.feels_like;
-       const humidity = data.main.humidity;
-       const condition = data.weather[0].description;
-       const wind = data.wind.speed;
-       const location = data.name;
-       const country = data.sys.country;
-       const iconCode = data.weather[0].icon;
-       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+   else if(userMsg.startsWith('/weather ')){
+  const city = userMsg.slice(9).trim();
+  if(!city){
+    return bot.sendMessage(chatId, `❗️Enter a Valid City (eg. /weather Melbourne)`);
+  }
 
+  try {
+    const apiKey = '6f0502b3360750ab87fa1531e26bf2c4';
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+    const response = await axios.get(apiUrl);
+    const data = response.data;
 
-       const message = `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸\n║  🌤️ *Weather in ${location} ${city}\n║  🌡️ Temperature: *${temp}°C*\n║  🤗 Feels Like: *${feels}°C*\n║  💧 Humidity: *${humidity}%*\n║  🌬️ Wind Speed: *${wind} m/s*\n║  ☁️ Condition: *${condition}*\n║\n║   [🖼️ View Icon](${iconUrl})\n║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`;
-       const mode = {parse_mode: 'Markdown'}
-       bot.sendMessage(chatId, message, mode)
+    const temp = data.main.temp;
+    const feels = data.main.feels_like;
+    const humidity = data.main.humidity;
+    const condition = data.weather[0].description;
+    const wind = data.wind.speed;
+    const location = data.name;
+    const country = data.sys.country;
+    const iconCode = data.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-     }catch(err){
-       console.error("Error: ", err)
-       bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
-       }
-  }else{
+    const message = `<b>╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸</b><b>║ 🌤️ Weather in ${location}, ${country}</b><b>║ 🌡️ Temperature:</b> ${temp}°C<b>║ 🤗 Feels Like:</b> ${feels}°C<b>║ 💧 Humidity:</b> ${humidity}%<b>║ 🌬️ Wind Speed:</b> ${wind} m/s<b>║ ☁️ Condition:</b> ${condition}<b>║</b><b>║ 🖼️ <a href="${iconUrl}">View Icon</a></b><b>║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂</b>`;
+
+    bot.sendMessage(chatId, message, { parse_mode: 'HTML' });
+
+  } catch (err) {
+    console.error("Error: ", err);
+    bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
+  }
+}else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
