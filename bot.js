@@ -15,10 +15,12 @@ bot.on('message', async(msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const userId = msg.from.id;
+  const chatType = msg.chat.type;
   const userFirstName = msg.from.first_name || "Unknown";
   const userLastName = msg.from.last_name || "Unknown";
   const userName = msg.from.username || "Unknown";
 
+  if (!userMsg || (chatType === 'channel')) return; 
   if (userMsg === "/start"){
     bot.sendMessage(chatId, `🖐 Welcome to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭, Please follow my OligoTech Channel at https://t.me/OligoTech for more tech updates and insights.\nType /help to see what I can do.`);
   }else if(userMsg === "/help"){
@@ -170,53 +172,55 @@ bot.on('message', async(msg) => {
     }
   }else if (userMsg === "/play"){
      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
-  }else if (userMsg.startsWith('/play')) {
-  const song = userMsg.slice(6).trim();
-  if (!song) {
-    bot.sendMessage(chatId, 'Please provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
-    return;
-  }
-
-  try {
-    const results = await ytSearch(song);
-    const video = results.videos[0];
-
-    if (!video) {
-      return bot.sendMessage(chatId, '❌ No video found for your search.');
+  }else if (userMsg.startsWith('/play ')) {
+    const song = userMsg.slice(6).trim();
+    if (!song) {
+      return bot.sendMessage(chatId, '❗️ Please provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
     }
 
-    const videoUrl = video.url;
-    const title = video.title;
+    try {
+      const results = await require('yt-search')(song);
+      const video = results.videos.length > 0 ? results.videos[0] : null;
 
-    console.log('🎵 Title:', title);
-    console.log('🔗 URL:', videoUrl);
+      if (!video) {
+        return bot.sendMessage(chatId, '❌ No video found for that song.');
+      }
 
-    bot.sendMessage(chatId, `╔⫷⫷⫷[💠 FETCH STATUS ]⫸⫸⫸◆\n\n Fetching ${title} from server...\n\n ⫷⫷⫷[❂⊣꧁𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉꧂⊢❂]⫸⫸⫸◆`);
+      const videoUrl = video.url;
+      const outputFilePath = `./${chatId}_${Date.now()}.mp3`;
 
-    const outputFilePath = `${chatId}-${Date.now()}.mp3`;
-    const stream = ytdl(videoUrl, { filter: 'audioonly' , quality: 'highestaudio'});
+      bot.sendMessage(chatId, `🎧 Fetching "${video.title}"... Please wait.`);
 
-    stream.on('error', (err) => {
-      console.error('❌ ytdl error:', err.message);
-      bot.sendMessage(chatId, '❌ Failed to download audio from YouTube.');
-    });
-
-    ffmpeg(stream).audioBitrate(128).save(outputFilePath).on('end', () => {
-        bot.sendAudio(chatId, outputFilePath, {
-          caption: `${video.title}`,
-          performer: `${video.author.name}`
-        }).then(() => {
-          fs.unlinkSync(outputFilePath);
-      });
-      }).on('error', (err) => {
-        console.error('❌ ffmpeg error:', err.message);
-        bot.sendMessage(chatId, '❌ Error converting or sending the audio.');
+      const stream = require('ytdl-core')(videoUrl, {
+        filter: 'audioonly',
+        quality: 'highestaudio',
       });
 
-  } catch (err) {
-    console.error('❌ Unexpected error:', err.message);
-    bot.sendMessage(chatId, '⚠️ Something went wrong. Try again later.');
-  }
-        }else{
+      stream.on('error', (err) => {
+        console.error('❌ Stream Error:', err);
+        bot.sendMessage(chatId, '❌ Failed to fetch audio from YouTube.');
+      });
+
+      const ffmpegProcess = require('fluent-ffmpeg')(stream)
+        .audioBitrate(128)
+        .save(outputFilePath)
+        .on('end', () => {
+          bot.sendAudio(chatId, outputFilePath, {
+            title: video.title,
+            performer: video.author.name
+          }).then(() => {
+            require('fs').unlinkSync(outputFilePath);
+          });
+        })
+        .on('error', (err) => {
+          console.error('❌ FFmpeg Error:', err);
+          bot.sendMessage(chatId, '❌ Error converting audio.');
+        });
+
+    } catch (err) {
+      console.error('❌ General Error:', err);
+      bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
+    }
+  }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
