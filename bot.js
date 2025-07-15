@@ -116,7 +116,7 @@ bot.on('message', async(msg) => {
   }else if(userMsg.startsWith("/weather ")){
      const city = userMsg.slice(9).trim().toLowerCase();
      if(!city){
-       return bot.sendMessage("❗️Enter a Valid City , eg. [/weather Accra]
+       return bot.sendMessage("❗️Enter a Valid City , eg. [/weather Melbourne]');
      }
      const apiKey = "6f0502b3360750ab87fa1531e26bf2c4";
      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=celsius`;
