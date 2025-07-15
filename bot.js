@@ -18,7 +18,7 @@ bot.on('message', async(msg) => {
   if (userMsg === "/start"){
     bot.sendMessage(chatId, `🖐 Welcome to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭, Please follow my OligoTech Channel at https://t.me/OligoTech for more tech updates and insights.\nType /help to see what I can do.`);
   }else if(userMsg === "/help"){
-    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends Suarez bore face sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈ CRYPTO ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /btc ⇒ Bitcoin current price 💰\n◈ /eth ⇒ Ethereum current price 🧠\n◈ /sol ⇒ Solana current price 🔮\n◈ /bnb ⇒ Binance coin current price 🪙\n◈ /ada ⇒ Cardano current price 💢\n◈ /xrp ⇒ Ripple current price💠\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
+    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ View your info or botOwner info 👤 \n\n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends Suarez bore face sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈ CRYPTO ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /btc ⇒ Bitcoin current price 💰\n◈ /eth ⇒ Ethereum current price 🧠\n◈ /sol ⇒ Solana current price 🔮\n◈ /bnb ⇒ Binance coin current price 🪙\n◈ /ada ⇒ Cardano current price 💢\n◈ /xrp ⇒ Ripple current price💠\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n◈ /weather - Current weather in city\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n║  ◈ /myInfo - Get your own info.\n║\n║  ◈ /botOwnerInfo - Know more about the ║ bot creator.\n║\n╠════🔗FOLLOW MY GITHUB════⧈\n║\n║ 🐱 GitHub: github.com/oligocodes👾\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg === "/ping"){
@@ -111,6 +111,37 @@ bot.on('message', async(msg) => {
       console.error(e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💠`);
       }
+  }else if(userMsg.startsWith("/weather ")){
+     const city = userMsg.slice(9).trim().toLowerCase();
+     if(!city){
+       return bot.sendMessage("❗️Enter a Valid City , eg. [/weather Accra]
+     }
+     const apiKey = "6f0502b3360750ab87fa1531e26bf2c4";
+     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=celsius`;
+
+
+     try{
+       const response = await axios.get(apiUrl);
+       const data = response.data;
+       const temp = data.main.temp;
+       const feels = data.main.feels_like;
+       const humidity = data.main.humidity;
+       const condition = data.weather[0].description;
+       const wind = data.wind.speed;
+       const location = data.name;
+       const country = data.sys.country;
+       const iconCode = data.weather[0].icon;
+       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+
+       const message = `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸\n║  🌤️ *Weather in ${location} ${city}\n║  🌡️ Temperature: *${temp}°C*\n║  🤗 Feels Like: *${feels}°C*\n║  💧 Humidity: *${humidity}%*\n║  🌬️ Wind Speed: *${wind} m/s*\n║  ☁️ Condition: *${condition}*\n║\n║   [🖼️ View Icon](${iconUrl})\n║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`;
+       const mode = {parse_mode: 'Markdown'}
+       bot.sendMessage(chatId, message, mode)
+
+     }catch(err){
+       console.error("Error: ", err)
+       bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
+       }
   }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
