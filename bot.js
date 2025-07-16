@@ -166,37 +166,46 @@ bot.on('message', async(msg) => {
       console.error("Error: ", err);
       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
-  }// STEP 1: Search
-const searchRes = await axios.get(
-  `https://saavn.dev/api/search?query=${encodeURIComponent(songName)}`
-);
-const results = searchRes.data?.data?.results;
-if (!Array.isArray(results) || results.length === 0) {
-  return bot.sendMessage(chatId, `🚫 No results for "${songName}".`);
-}
-const meta = results[0];
+  }else if (userMsg.startsWith('/play ')) {
+  const songName = userMsg.slice(6).trim();
+  if (!songName) {
+    return bot.sendMessage(chatId, '❗️ Use /play <song title>');
+  }
 
-// STEP 2: Fetch details
-const detailRes = await axios.get(
-  `https://saavn.dev/api/song/${meta.id}`
-);
-const detail = detailRes.data;
-const audioUrl = detail.media_url; // 320 kbps URL
+  try {
+    // STEP 1: Search for the song
+    const searchRes = await axios.get(`https://saavn.dev/api/search?query=${encodeURIComponent(songName)}`);
+    const results = searchRes?.data?.data?.results;
 
-if (!audioUrl) {
-  console.log('❗ detail JSON:', detail);
-  return bot.sendMessage(chatId, '🚫 Audio URL not found. See console.');
-}
+    if (!Array.isArray(results) || results.length === 0) {
+      return bot.sendMessage(chatId, `🚫 No results found for "${songName}". Try another title.`);
+    }
 
-// Send audio
-await bot.sendMessage(chatId, `🎧 Playing "${detail.title}"...`);
-return bot.sendAudio(chatId, audioUrl, {
-  thumb: detail.image_url,
-  title: detail.title,
-  performer: detail.primary_artists,
-  caption: `🎵 *${detail.title}* — ${detail.primary_artists}`,
-  parse_mode: 'Markdown'
-});
-)}else{
+    const firstResult = results[0];
+
+    // STEP 2: Fetch song details using the ID
+    const detailRes = await axios.get(`https://saavn.dev/api/songs/${firstResult.id}`);
+    const songDetail = detailRes?.data?.data;
+
+    if (!songDetail || !songDetail.media_url) {
+      console.log('❗ No media_url found:', songDetail);
+      return bot.sendMessage(chatId, '🚫 No downloadable audio link available for this song.');
+    }
+
+    // STEP 3: Send audio
+    await bot.sendMessage(chatId, `🎧 Fetching "${songDetail.title}" by ${songDetail.primary_artists}...`);
+    return bot.sendAudio(chatId, songDetail.media_url, {
+      title: songDetail.title,
+      performer: songDetail.primary_artists,
+      thumb: songDetail.image_url,
+      caption: `🎵 *${songDetail.title}*\n👤 *${songDetail.primary_artists}*\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`,
+      parse_mode: 'Markdown'
+    });
+
+  } catch (err) {
+    console.error('❌ Error in /play:', err.message || err);
+    return bot.sendMessage(chatId, '⚠️ Could not fetch the song—please try again.');
+  }
+  }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
