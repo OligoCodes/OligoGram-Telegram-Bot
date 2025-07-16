@@ -175,7 +175,7 @@ bot.on('message', async(msg) => {
     }
 
     try {
-      const response = await axios.get(`https://saavn.me/search/songs?query=${encodeURIComponent(songName)}`);
+      const response = await axios.get(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`);
       const data = response?.data?.data;
       
       if (!data || !Array.isArray(data.results) || data.results.length === 0) {
