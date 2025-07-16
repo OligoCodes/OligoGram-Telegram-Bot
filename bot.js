@@ -166,46 +166,36 @@ bot.on('message', async(msg) => {
       console.error("Error: ", err);
       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
-  }else if (userMsg === "/play"){
-     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
-  }else if (userMsg.startsWith('/play ')) {
-  const songName = userMsg.slice(6).trim();
-  if (!songName) return bot.sendMessage(chatId, '❗️ Use /play <song title>');
+  }// STEP 1: Search
+const searchRes = await axios.get(
+  `https://saavn.dev/api/search?query=${encodeURIComponent(songName)}`
+);
+const results = searchRes.data?.data?.results;
+if (!Array.isArray(results) || results.length === 0) {
+  return bot.sendMessage(chatId, `🚫 No results for "${songName}".`);
+}
+const meta = results[0];
 
-  try {
-    // Search step
-    const searchRes = await axios.get(
-      `https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`
-    );
-    const results = searchRes.data?.data?.results;
-    if (!Array.isArray(results) || results.length === 0) {
-      return bot.sendMessage(chatId, `🚫 No results for "${songName}".`);
-    }
-    const meta = results[0];
+// STEP 2: Fetch details
+const detailRes = await axios.get(
+  `https://saavn.dev/api/song/${meta.id}`
+);
+const detail = detailRes.data;
+const audioUrl = detail.media_url; // 320 kbps URL
 
-    // Details step
-    const detailRes = await axios.get(
-      `https://saavn.dev/api/song?id=${meta.id}`
-    );
-    const detail = detailRes.data?.data;
-    const audioUrl = detail.media_url || detail.url || detail.downloadUrl?.[0]?.link;
-    if (!audioUrl) {
-      return bot.sendMessage(chatId, '🚫 No audio URL found in song detail.');
-    }
+if (!audioUrl) {
+  console.log('❗ detail JSON:', detail);
+  return bot.sendMessage(chatId, '🚫 Audio URL not found. See console.');
+}
 
-    await bot.sendMessage(chatId, `🎧 Fetching "${detail.title}"...`);
-    await bot.sendAudio(chatId, audioUrl, {
-      thumb: detail.image_url || meta.image,
-      title: detail.title,
-      performer: detail.primary_artists || detail.primaryArtists,
-      caption: `🎵 Now playing: *${detail.title}*\n👤 Artist: *${detail.primary_artists || detail.primaryArtists}*`,
-      parse_mode: 'Markdown'
-    });
-
-  } catch (err) {
-    console.error('❌ Error in /play:', err);
-    bot.sendMessage(chatId, '⚠️ Could not fetch the song—please try again.');
-  }
-}else{
+// Send audio
+await bot.sendMessage(chatId, `🎧 Playing "${detail.title}"...`);
+return bot.sendAudio(chatId, audioUrl, {
+  thumb: detail.image_url,
+  title: detail.title,
+  performer: detail.primary_artists,
+  caption: `🎵 *${detail.title}* — ${detail.primary_artists}`,
+  parse_mode: 'Markdown'
+});else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
