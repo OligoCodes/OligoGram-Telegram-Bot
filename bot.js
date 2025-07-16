@@ -171,49 +171,44 @@ bot.on('message', async(msg) => {
   }else if (userMsg === "/play"){
      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
   }else if (userMsg.startsWith('/play ')) {
-    const songName = userMsg.slice(6).trim();
-    if (!songName) {
-      return bot.sendMessage(chatId, '❗️ Please provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
+  const songName = userMsg.slice(6).trim();
+  if (!songName) {
+    return bot.sendMessage(chatId, '❗️ Provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
+  }
+
+  try {
+    const res = await axios.get(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`);
+    const results = res.data?.data?.results;
+    if (!Array.isArray(results) || results.length === 0) {
+      return bot.sendMessage(chatId, `🚫 No results for "${songName}".`);
     }
 
-    try {
-      const response = await axios.get(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`);
-      const data = response?.data?.data;
-      
-      if (!data || !Array.isArray(data.results) || data.results.length === 0) {
-        return bot.sendMessage(chatId, `🚫 Could not find any results for ${songName}, try another song 🎵`);
-      }
-      
-      if(!results ||!Array.isArray(results) ||results.length === 0){
-        return bot.sendMessage(chatId,  `🚫 Could not find any results for ${songName}, try another song 🎵 `);
-      }
-      
-      const results = data.results;
-      const song = results[0];
-      const downloadOptions = Array.isArray(song.url) ? song.url : [];
+    const song = results[0];
+    const downloadOptions = Array.isArray(song.downloadUrl) ? song.downloadUrl : [];
+    const bestOpt = downloadOptions
+      .filter(opt => opt.link)
+      .sort((a, b) => parseInt(b.quality) - parseInt(a.quality))[0];
 
-      const audioUrl = downloadOptions[4]?.link || downloadOptions[2]?.link || downloadOptions[0]?.link;
-      if (!audioUrl) {
-       return bot.sendMessage(chatId, '🚫 No downloadable audio found for this song.');
-     }
-      const title = song.name;
-      const artist = song.artists.primary.name;
-      const image = song.image.url;
-
-      bot.sendMessage(chatId, `🎧 Fetching "${title}"... Please wait.`).then(() => { 
-        bot.sendAudio(chatId, audioUrl, {
-          title,
-          performer: artist,
-          caption: `🎵 Now playing: *${title}*\n👤 Artist: *${artist}*\n  ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂  `,
-          thumb: image,
-          parse_mode: 'Markdown'}); 
-      });
-      console.log('🧪 Full song object:', song);
-      console.log('🧪 downloadOptions:', downloadOptions);
-    } catch (err) {
-      console.error('❌ General Error:', err);
-      bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
+    if (!bestOpt) {
+      return bot.sendMessage(chatId, '🚫 No downloadable audio link available for this song.');
     }
-        }else{
+
+    const audioUrl = bestOpt.link;
+    const { title, primaryArtists: artist, image } = song;
+
+    await bot.sendMessage(chatId, `🎧 Fetching "${title}" by ${artist}...`);
+    await bot.sendAudio(chatId, audioUrl, {
+      thumb: image,
+      title,
+      performer: artist,
+      caption: `🎵 Now Playing: *${title}*\n👤 Artist: *${artist}*`,
+      parse_mode: 'Markdown'
+    });
+
+  } catch (err) {
+    console.error('❌ Error:', err);
+    bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
+  }
+}else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
