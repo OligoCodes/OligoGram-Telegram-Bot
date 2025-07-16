@@ -197,6 +197,6 @@ return bot.sendAudio(chatId, audioUrl, {
   caption: `🎵 *${detail.title}* — ${detail.primary_artists}`,
   parse_mode: 'Markdown'
 });
-}else{
+)}else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
