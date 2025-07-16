@@ -179,7 +179,7 @@ bot.on('message', async(msg) => {
       const results = response.data.data.results[0];
 
       if(!results || results.length === 0){
-        return.bot.sendMessage(chatId,  `🚫 Could not find any results for ${songName}, try another song 🎵 `);
+        return bot.sendMessage(chatId,  `🚫 Could not find any results for ${songName}, try another song 🎵 `);
       }
 
       const song = results[0];
