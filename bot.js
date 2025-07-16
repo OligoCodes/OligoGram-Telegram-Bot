@@ -175,7 +175,7 @@ bot.on('message', async(msg) => {
     }
 
     try {
-      const response = await require(`https://saavn.me/search/songs?query=${encodeURIComponent(songName)}`);
+      const response = await axios.get(`https://saavn.me/search/songs?query=${encodeURIComponent(songName)}`);
       const results = response.data.data.results[0];
 
       if(!results || results.length === 0){
@@ -185,7 +185,7 @@ bot.on('message', async(msg) => {
       const song = results[0];
       const downloadOptions = song.downloadUrl
 
-      const audioUrl = downloadOptions[4].link || downloadOptions[2].link;
+      const audioUrl = downloadOptions[4]?.link || downloadOptions[2]?.link;
       const title = song.title;
       const artist = song.primaryArtists
       const image = song.image;
