@@ -168,46 +168,45 @@ bot.on('message', async(msg) => {
     }
   }else if (userMsg === "/play"){
      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
-  }else if (userMsg === "/play"){
-     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
-  }if (userMsg.startsWith('/play ')) {
+  }else if (userMsg.startsWith('/play ')) {
   const songName = userMsg.slice(6).trim();
-  if (!songName) return bot.sendMessage(chatId, '❗️ Provide a song name.');
+  if (!songName) return bot.sendMessage(chatId, 'Provide a song name via /play <title>.');
 
   try {
+    // STEP 1: Search
     const searchRes = await axios.get(
       `https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`
     );
-
     const results = searchRes.data?.data?.results;
     if (!Array.isArray(results) || results.length === 0) {
       return bot.sendMessage(chatId, `🚫 No results for "${songName}".`);
     }
+    const meta = results[0];
 
-    const songMeta = results[0];
-
+    // STEP 2: Fetch song details
     const detailRes = await axios.get(
-      `https://saavn.dev/api/song?id=${songMeta.id}`
+      `https://saavn.dev/api/song?id=${meta.id}`
     );
     const detail = detailRes.data?.data;
-    const audioUrl = detail.media_url || detail.downloadUrl?.[0]?.link;
+    const audioUrl = detail.media_url || detail.media_preview_url;
     if (!audioUrl) {
-      return bot.sendMessage(chatId, '🚫 No downloadable audio link found.');
+      return bot.sendMessage(chatId, '🚫 Audio URL not found in song details.');
     }
 
+    // Send audio
     await bot.sendMessage(chatId, `🎧 Fetching "${detail.title}"...`);
     await bot.sendAudio(chatId, audioUrl, {
       thumb: detail.image_url,
       title: detail.title,
-      performer: detail.primary_artists || detail.singers,
-      caption: `🎵 Now playing: *${detail.title}*\n👤 Artist: *${detail.primary_artists || detail.singers}*`,
+      performer: detail.primary_artists,
+      caption: `🎵 Now playing: *${detail.title}*\n👤 Artist: *${detail.primary_artists}*`,
       parse_mode: 'Markdown'
     });
 
   } catch (err) {
-    console.error('❌ Error:', err);
-    bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
+    console.error('⚠️ /play command error:', err);
+    bot.sendMessage(chatId, '⚠️ Could not fetch the song—please try again.');
   }
-      }else{
+}else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
