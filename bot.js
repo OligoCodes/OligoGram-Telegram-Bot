@@ -168,6 +168,8 @@ bot.on('message', async(msg) => {
     }
   }else if (userMsg === "/play"){
      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
+  }else if (userMsg === "/play"){
+     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
   }else if (userMsg.startsWith('/play ')) {
     const songName = userMsg.slice(6).trim();
     if (!songName) {
@@ -176,24 +178,17 @@ bot.on('message', async(msg) => {
 
     try {
       const response = await axios.get(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`);
-      const data = response?.data?.data;
-      
-      if (!data || !Array.isArray(data.results) || data.results.length === 0) {
-        return bot.sendMessage(chatId, `🚫 Could not find any results for ${songName}, try another song 🎵`);
-      }
-      
+      const results = response.data.data.results;
+
       if(!results || results.length === 0){
         return bot.sendMessage(chatId,  `🚫 Could not find any results for ${songName}, try another song 🎵 `);
       }
-      
-      const results = data.results;
+
       const song = results[0];
-      const downloadOptions = Array.isArray(song.downloadUrl) ? song.downloadUrl : [];
+      const downloadOptions = song.downloadUrl;
+      console.log(downloadOptions);
 
       const audioUrl = downloadOptions[4]?.link || downloadOptions[2]?.link || downloadOptions[0]?.link;
-      if (!audioUrl) {
-       return bot.sendMessage(chatId, '🚫 No downloadable audio found for this song.');
-     }
       const title = song.title;
       const artist = song.primaryArtists
       const image = song.image;
@@ -206,8 +201,6 @@ bot.on('message', async(msg) => {
           thumb: image,
           parse_mode: 'Markdown'}); 
       });
-      console.log('🧪 Full song object:', song);
-      console.log('🧪 downloadOptions:', downloadOptions);
     } catch (err) {
       console.error('❌ General Error:', err);
       bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
