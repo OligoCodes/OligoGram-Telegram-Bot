@@ -45,7 +45,7 @@ bot.on('message', async(msg) => {
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive"){
      const musicUrl = `./Alive.mp3`;
-     const details = {caption : `I'm always alive buddy 👾👾👾`, title: `Montagem Ladrao`,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
+     const details = {caption : `I'm always alive buddy 👾👾👾`, title: `Montagem Xonada`,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
   }else if (userMsg === "/crypto"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
