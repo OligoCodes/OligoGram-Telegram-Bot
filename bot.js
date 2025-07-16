@@ -170,38 +170,37 @@ bot.on('message', async(msg) => {
      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
   }else if (userMsg === "/play"){
      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
-  }else if (userMsg.startsWith('/play ')) {
+  }if (userMsg.startsWith('/play ')) {
   const songName = userMsg.slice(6).trim();
-  if (!songName) {
-    return bot.sendMessage(chatId, '❗️ Provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
-  }
+  if (!songName) return bot.sendMessage(chatId, '❗️ Provide a song name.');
 
   try {
-    const res = await axios.get(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`);
-    const results = res.data?.data?.results;
+    const searchRes = await axios.get(
+      `https://saavn.dev/api/search/songs?query=${encodeURIComponent(songName)}`
+    );
+
+    const results = searchRes.data?.data?.results;
     if (!Array.isArray(results) || results.length === 0) {
       return bot.sendMessage(chatId, `🚫 No results for "${songName}".`);
     }
 
-    const song = results[0];
-    const downloadOptions = Array.isArray(song.downloadUrl) ? song.downloadUrl : [];
-    const bestOpt = downloadOptions
-      .filter(opt => opt.link)
-      .sort((a, b) => parseInt(b.quality) - parseInt(a.quality))[0];
+    const songMeta = results[0];
 
-    if (!bestOpt) {
-      return bot.sendMessage(chatId, '🚫 No downloadable audio link available for this song.');
+    const detailRes = await axios.get(
+      `https://saavn.dev/api/song?id=${songMeta.id}`
+    );
+    const detail = detailRes.data?.data;
+    const audioUrl = detail.media_url || detail.downloadUrl?.[0]?.link;
+    if (!audioUrl) {
+      return bot.sendMessage(chatId, '🚫 No downloadable audio link found.');
     }
 
-    const audioUrl = bestOpt.link;
-    const { title, primaryArtists: artist, image } = song;
-
-    await bot.sendMessage(chatId, `🎧 Fetching "${title}" by ${artist}...`);
+    await bot.sendMessage(chatId, `🎧 Fetching "${detail.title}"...`);
     await bot.sendAudio(chatId, audioUrl, {
-      thumb: image,
-      title,
-      performer: artist,
-      caption: `🎵 Now Playing: *${title}*\n👤 Artist: *${artist}*`,
+      thumb: detail.image_url,
+      title: detail.title,
+      performer: detail.primary_artists || detail.singers,
+      caption: `🎵 Now playing: *${detail.title}*\n👤 Artist: *${detail.primary_artists || detail.singers}*`,
       parse_mode: 'Markdown'
     });
 
@@ -209,6 +208,6 @@ bot.on('message', async(msg) => {
     console.error('❌ Error:', err);
     bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
   }
-}else{
+      }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
