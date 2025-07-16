@@ -183,22 +183,26 @@ bot.on('message', async(msg) => {
       }
 
       const song = results[0];
-      const downloadOptions = song.downloadUrl;
-      console.log(downloadOptions);
+      const downloadOptions = Array.isArray(song.downloadUrl) ? song.downloadUrl : [];
 
-      const audioUrl = downloadOptions[4]?.link || downloadOptions[2]?.link;
+      const audioUrl = downloadOptions[4]?.link || downloadOptions[2]?.link || downloadOptions[0]?.link;
+      if (!audioUrl) {
+       return bot.sendMessage(chatId, '🚫 No downloadable audio found for this song.');
+     }
       const title = song.title;
       const artist = song.primaryArtists
       const image = song.image;
 
-      await bot.sendMessage(chatId, `🎧 Fetching "${title}"... Please wait.`);
-      
-      await bot.sendAudio(chatId, audioUrl, {
+      bot.sendMessage(chatId, `🎧 Fetching "${title}"... Please wait.`).then(() => { 
+        bot.sendAudio(chatId, audioUrl, {
           title,
           performer: artist,
           caption: `🎵 Now playing: *${title}*\n👤 Artist: *${artist}*\n  ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂  `,
           thumb: image,
           parse_mode: 'Markdown'}); 
+      });
+      console.log('🧪 Full song object:', song);
+      console.log('🧪 downloadOptions:', downloadOptions);
     } catch (err) {
       console.error('❌ General Error:', err);
       bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
