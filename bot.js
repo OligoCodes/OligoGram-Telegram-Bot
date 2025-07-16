@@ -176,14 +176,15 @@ bot.on('message', async(msg) => {
 
     try {
       const response = await axios.get(`https://saavn.me/search/songs?query=${encodeURIComponent(songName)}`);
-      const results = response.data.data.results[0];
+      const results = response.data.data.results;
 
       if(!results || results.length === 0){
         return bot.sendMessage(chatId,  `🚫 Could not find any results for ${songName}, try another song 🎵 `);
       }
 
       const song = results[0];
-      const downloadOptions = song.downloadUrl
+      const downloadOptions = song.downloadUrl;
+      console.log(downloadOptions);
 
       const audioUrl = downloadOptions[4]?.link || downloadOptions[2]?.link;
       const title = song.title;
