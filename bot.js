@@ -1,9 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
-const ytdl = require('ytdl-core');
-const ffmpeg = require('fluent-ffmpeg');
-const fs = require('fs');
-const ytSearch = require('yt-search');
 require('dotenv').config();
 
 const token = process.env.token;
@@ -173,50 +169,35 @@ bot.on('message', async(msg) => {
   }else if (userMsg === "/play"){
      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  🎶 Type /play <songname>\n║   (eg. /play montagem bilião)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` )
   }else if (userMsg.startsWith('/play ')) {
-    const song = userMsg.slice(6).trim();
-    if (!song) {
+    const songName = userMsg.slice(6).trim();
+    if (!songName) {
       return bot.sendMessage(chatId, '❗️ Please provide a song name. Example: `/play calm down`', { parse_mode: 'Markdown' });
     }
 
     try {
-      const results = await require('yt-search')(song);
-      const video = results.videos.length > 0 ? results.videos[0] : null;
+      const response = await require(`https://saavn.me/search/songs?query=${encodeURIComponent(songName)}`);
+      const results = response.data.data.results[0];
 
-      if (!video) {
-        return bot.sendMessage(chatId, '❌ No video found for that song.');
+      if(!results || results.length === 0){
+        return.bot.sendMessage(chatId,  `🚫 Could not find any results for ${songName}, try another song 🎵 `);
       }
 
-      const videoUrl = video.url;
-      const outputFilePath = `./${chatId}_${Date.now()}.mp3`;
+      const song = results[0];
+      const downloadOptions = song.downloadUrl
 
-      bot.sendMessage(chatId, `🎧 Fetching "${video.title}"... Please wait.`);
+      const audioUrl = downloadOptions[4].link || downloadOptions[2].link;
+      const title = song.title;
+      const artist = song.primaryArtists
+      const image = song.image;
 
-      const stream = require('ytdl-core')(videoUrl, {
-        filter: 'audioonly',
-        quality: 'highestaudio',
-      });
-
-      stream.on('error', (err) => {
-        console.error('❌ Stream Error:', err);
-        bot.sendMessage(chatId, '❌ Failed to fetch audio from YouTube.');
-      });
-
-      const ffmpegProcess = require('fluent-ffmpeg')(stream)
-        .audioBitrate(128)
-        .save(outputFilePath)
-        .on('end', () => {
-          bot.sendAudio(chatId, outputFilePath, {
-            title: video.title,
-            performer: video.author.name
-          }).then(() => {
-            require('fs').unlinkSync(outputFilePath);
-          });
-        })
-        .on('error', (err) => {
-          console.error('❌ FFmpeg Error:', err);
-          bot.sendMessage(chatId, '❌ Error converting audio.');
-        });
-
+      await bot.sendMessage(chatId, `🎧 Fetching "${title}"... Please wait.`);
+      
+      await bot.sendAudio(chatId, audioUrl, {
+          title,
+          performer: artist,
+          caption: `🎵 Now playing: *${title}*\n👤 Artist: *${artist}*\n  ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂  `,
+          thumb: image,
+          parse_mode: 'Markdown'}); 
     } catch (err) {
       console.error('❌ General Error:', err);
       bot.sendMessage(chatId, '⚠️ An unexpected error occurred.');
