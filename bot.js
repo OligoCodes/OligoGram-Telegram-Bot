@@ -92,6 +92,8 @@ bot.on('message', (msg) => {
       const correctSyntax = deal.replace(/[(]/g, "*(");
       const gen = eval(correctSyntax);
       bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
+  }else if(userMsg.includes('😂') || userMsg.includes('lol') || userMsg.includes('haha') || userMsg.includes('funny')){
+      bot.sendMessage(chatId,  `😂 ${userName},  what's funny?`)
   }
 });
 
@@ -99,6 +101,7 @@ bot.on('message', (msg) => {
 //image generation
 bot.on("unsplashImages", async (msg) => {
    const chatId = msg.chat.id;
+   const userMsg = msg.text;
   
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
@@ -125,7 +128,8 @@ bot.on("unsplashImages", async (msg) => {
 
 //jokes
 bot.on("jokes", async (msg) => {
-  const chatId = msg.chat.id 
+  const chatId = msg.chat.id;
+  const userMsg = msg.text;
   
   if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
       try{
@@ -158,6 +162,7 @@ bot.on("jokes", async (msg) => {
 //weather
 bot.on("weatherInfo" , async (msg) => {
   const chatId = msg.chat.id;
+  const userMsg = msg.text;
 
   if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
@@ -198,6 +203,7 @@ bot.on("weatherInfo" , async (msg) => {
 //crypto
 bot.on("crypto", async (msg) => {
   const chatId = msg.chat.id;
+  const userMsg = msg.text;
   
   if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
