@@ -20,10 +20,10 @@ bot.on('message', (msg) => {
   if (!userMsg || (chatType === 'channel')) return; 
   if (userMsg === "/start"){
     const opts = {
-      relpy_markup : {
+      reply_markup : {
       inline_keyboard : [
         [
-          {text: "𝗝𝗢𝗜𝗡 𝗢𝗟𝗜𝗚𝗢𝗧𝗘𝗖𝗛 𝗡𝗢𝗪 👑", url: "https://t.me/OligoTech"}
+          { text: "𝗝𝗢𝗜𝗡 𝗢𝗟𝗜𝗚𝗢𝗧𝗘𝗖𝗛 𝗡𝗢𝗪 👑", url: "https://t.me/OligoTech"}
         ]
       ]
       }
