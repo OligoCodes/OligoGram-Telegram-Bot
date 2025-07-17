@@ -18,38 +18,38 @@ bot.on('message', async(msg) => {
 
   if (!userMsg || (chatType === 'channel')) return; 
   if (userMsg === "/start"){
-    bot.sendMessage(chatId, `🖐 Welcome to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭, Please follow my OligoTech Channel at https://t.me/OligoTech for more tech updates and insights.\nType /help to see what I can do.`);
-  }else if(userMsg === "/help"){
+    bot.sendMessage(chatId, `🖐 Welcome to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭, Please follow my OligoTech Channel at https://t.me/OligoTech for more tech updates and insights.\n\nType /help to see what I can do.`);
+  }else if(userMsg === "/help" || userMsg === "/help@oligogram_bot" ){
     bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈/img - Displays a random image 🖼\n◈ /crypto - Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /math ⇒ Basic math calculations 🔢\n\n⧈⧈⧈⧈⧈⧈⧈⧈ FUN ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /joke ⇒ Random Jokes 😃\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n║  ◈ /myInfo - Get your own info.\n║\n║  ◈ /botOwnerInfo - Know more about the ║ bot creator.\n║\n╠════🔗FOLLOW MY GITHUB════⧈\n║\n║ 🐱 GitHub: github.com/oligocodes👾\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
-  }else if(userMsg === "/ping"){
+  }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
     bot.sendMessage(chatId, `⏳️ Calculating ....`).then(() =>{
      const end = Date.now();
      const pingTime = end - start;
      bot.sendMessage(chatId, `╔⫷⫷⫷[⚡️OLIGO PULSE ]⫸⫸⫸◆\n║\n║ 💥 𖣘 PONG!\n║ ⏱️ 𖣘 Latency: ${pingTime}ms.\n║\n╠════🔗 LINK STABLE═════⧈\n║\n║ ⚙ AI CORE: ░░ SYNCED👾\n║\n╚[🥶Developer: Joseph Bonsu 🇬🇭]◆`);
-})}else if(userMsg === "/myInfo"){
+})}else if(userMsg === "/myInfo" || userMsg === "/myInfo@oligogram_bot"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👤 USER PROFILE ]⫸⫸⫸◆\n║\n║  ◈ First Name: ${userFirstName}\n║  ◈ Last Name: ${userLastName}\n║  ◈ Username: @${userName}\n║  ◈ User ID: ${userId}\n║\n╠════📎YOU LOOK AWESOME═══⧈\n║\n║ Hope you’re enjoying the bot! 😎\n║\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`);
-  }else if(userMsg === "/botOwnerInfo"){
+  }else if(userMsg === "/botOwnerInfo" || userMsg === "/botOwnerInfo@oligogram_bot"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸◆\n║\n║ ◈ Owner: OligoCodes\n║ ◈ Role: Developer & Architect 🤖\n║ ◈ Location: Ghana 🇬🇭\n║ ◈ Contact: https://t.me/OligoCodes\n║\n╠═════🌐 VISIT MY GITHUB═════⧈\n║\n║ GitHub: github.com/OligoCodes/\n║\n╠[💬 Follow My WhatsApp Channel]═⧈\n║   WhatsApp: [https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W]\n║\n❂⊣꧁ ✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ✟ ꧂ ⊢❂`);
-  }else if(userMsg === "/photo"){
+  }else if(userMsg === "/photo" || userMsg === "/photo@oligogram_bot"){
       const photoUrl = `https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=300`;
       const caption = {caption : `👾 Here is a photo 📸`};
       bot.sendPhoto(chatId, photoUrl, caption);
-  }else if(userMsg === "/ownerPic"){
+  }else if(userMsg === "/ownerPic" || userMsg === "/ownerPic@oligogram_bot"){
       const ownerPhotoDir = `./oligo.jpg`;
       const caption = {caption : `OligoCodes, bot Owner, tech Enthusiast and  Developer from Ghana 🇬🇭. ... 🌍`};
       bot.sendPhoto(chatId, ownerPhotoDir, caption);
-  }else if(userMsg === "/sticker"){
+  }else if(userMsg === "/sticker" || userMsg === "/sticker@oligogram_bot"){
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
-  }else if(userMsg === "/alive"){
+  }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
      const musicUrl = `./Alive.mp3`;
-     const details = {caption : `I'm always alive buddy 👾👾👾`, title: `Montagem Xonada`,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
+     const details = {caption : `I'm always alive buddy ${username}`, title: `Montagem Xonada`,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
-  }else if (userMsg === "/crypto"){
+  }else if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
-  }else if(userMsg === "/btc"){
+  }else if(userMsg === "/btc" || userMsg === "/btc@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd`);
       const price = await response.data.bitcoin.usd;
@@ -60,7 +60,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto 🧠`);
       }
-  }else if(userMsg === "/eth"){
+  }else if(userMsg === "/eth" || userMsg === "/eth@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`)
       const ethPrice = await response.data.ethereum.usd;
@@ -71,7 +71,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🧠`);
       }
-  }else if(userMsg === "/sol"){
+  }else if(userMsg === "/sol" || userMsg === "/sol@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd`)
       const solPrice = await response.data.solana.usd;
@@ -82,7 +82,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🔮`);
       }
-  }else if(userMsg === "/bnb"){
+  }else if(userMsg === "/bnb" || userMsg === "/bnb@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`);
       const bnbPrice = await response.data.binancecoin.usd;
@@ -93,7 +93,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💢`);
       }
-  }else if(userMsg === "/ada"){
+  }else if(userMsg === "/ada" || userMsg === "/ada@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd`);
       const adaPrice = await response.data.cardano.usd;
@@ -104,7 +104,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🔮`);
       }
-  }else if(userMsg === "/xrp"){
+  }else if(userMsg === "/xrp" || userMsg === "xrp@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd`);
       const xrpPrice = await response.data.ripple.usd;
@@ -115,7 +115,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💠`);
       }
-  }else if(userMsg === '/weather'){
+  }else if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/weather ')){
    const city = userMsg.slice(9).trim();
@@ -147,7 +147,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", err);
       bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
    }
-  }else if(userMsg === '/img'){
+  }else if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/img ')){
     const imageName = userMsg.slice(5).trim();
@@ -166,7 +166,7 @@ bot.on('message', async(msg) => {
       console.error("Error: ", err);
       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
-  }else if(userMsg === "/math"){
+  }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
       bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else if(userMsg.startsWith('/add ')){
       const addition = userMsg.slice(5).trim();
@@ -210,7 +210,7 @@ bot.on('message', async(msg) => {
       const correctSyntax = deal.replace(/[(]/g, "*(");
       const gen = eval(correctSyntax);
       bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
-  }else if(userMsg === '/joke'){
+  }else if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
       try{
       const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
       const data = response.data;
@@ -230,4 +230,7 @@ bot.on('message', async(msg) => {
          console.error("Error ", e)
          bot.sendMessage(chatId, "🥶 Joke not found")
        }
-      }
+      }else{
+        bot.sendMessage(chatId,  `Stop saying ${userMsg} 🙃`);
+  }
+});
