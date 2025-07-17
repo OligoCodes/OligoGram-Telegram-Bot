@@ -236,3 +236,14 @@ bot.on('message', async(msg) => {
         bot.sendMessage(chatId,  `Stop saying ${userMsg} 🙃`);
   }
 });
+
+bot.on("newChatMembers", (msg) => {
+  const chatId = msg.chat.id;
+  const newMembers = msg.new_chat_members;
+  
+  newMembers.forEach( member => {
+    const user = member.first_name || "there";
+    
+    bot.sendMessage(chatId,  `Hello *${user}* , you are dearly welcome to this group!🤗\n Hope you are doing great?\n\n꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂` , {parse_mode: 'Markdown'});
+  });
+})
