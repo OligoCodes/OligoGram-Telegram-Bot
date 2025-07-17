@@ -207,7 +207,7 @@ bot.on('message', async(msg) => {
   }else if(userMsg.startsWith('/gen ')){
       const statement = userMsg.slice(5).trim();
       const deal = statement.replaceAll("÷", "/").replaceAll("×", "*")
-      const correctSyntax = deal.replace(/(\d)/g , "$1*");
+      const correctSyntax = deal.replace(/(\d()/g , "$1*");
       const gen = eval(correctSyntax);
       bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
   }else{
