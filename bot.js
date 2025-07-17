@@ -99,7 +99,7 @@ bot.on('message', (msg) => {
 
 
 //image generation
-bot.on("unsplashImages", async (msg) => {
+bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
    const userMsg = msg.text;
   
@@ -127,7 +127,7 @@ bot.on("unsplashImages", async (msg) => {
 
 
 //jokes
-bot.on("jokes", async (msg) => {
+bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   
@@ -160,7 +160,7 @@ bot.on("jokes", async (msg) => {
 
 
 //weather
-bot.on("weatherInfo" , async (msg) => {
+bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
 
@@ -201,7 +201,7 @@ bot.on("weatherInfo" , async (msg) => {
 
 
 //crypto
-bot.on("crypto", async (msg) => {
+bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   
@@ -277,7 +277,7 @@ bot.on("crypto", async (msg) => {
 });
 
 //new members 
-bot.on("newChatMembers", (msg) => {
+bot.on('new_chat_members', (msg) => {
   const chatId = msg.chat.id;
   const newMembers = msg.new_chat_members;
   
