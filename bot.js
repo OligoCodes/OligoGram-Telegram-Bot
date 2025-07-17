@@ -20,7 +20,7 @@ bot.on('message', async(msg) => {
   if (userMsg === "/start"){
     bot.sendMessage(chatId, `🖐 Welcome to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭, Please follow my OligoTech Channel at https://t.me/OligoTech for more tech updates and insights.\nType /help to see what I can do.`);
   }else if(userMsg === "/help"){
-    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈/img - Displays a random image 🖼\n◈ /crypto - Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /play ⇒ Play a song from title(not active yet)\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /math - Basic math calculations 🔢\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
+    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈/img - Displays a random image 🖼\n◈ /crypto - Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /math - Basic math calculations 🔢\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n║  ◈ /myInfo - Get your own info.\n║\n║  ◈ /botOwnerInfo - Know more about the ║ bot creator.\n║\n╠════🔗FOLLOW MY GITHUB════⧈\n║\n║ 🐱 GitHub: github.com/oligocodes👾\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg === "/ping"){
@@ -167,7 +167,47 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
   }else if(userMsg === "/math"){
-      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️ /subt a-b ⇒ a minus b\n║✖️ /mul a*b ⇒ a multiplied by b\n║➗️ /div a÷b ⇒ a divided by b\n║〰️ /sqrt a ⇒ square root of a\n║➿️ /rem a//b ⇒ remainder of a/b\n║♻️ /round a ⇒ round a\n║🔃 /exp a^b ⇒ a to the power b\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+  }else if(userMsg.startsWith('/add ')){
+      const addition = userMsg.slice(5).trim();
+      const add = eval(additon);
+      bot.sendMessage(chatId,  `➕️ The answer is ${add} ➕️`);
+  }else if(userMsg.startsWith('/subt ')){
+      const subtraction = userMsg.slice(6).trim();
+      const subt = eval(subtraction);
+      bot.sendMessage(chatId,  `➖️ The answer is ${subt} ➖️`);
+  }else if(userMsg.startsWith('/mul ')){
+      const multiplication = userMsg.slice(5).trim();
+      const multi = multiplication.replace("×", "*")
+      const mul = eval(multi);
+      bot.sendMessage(chatId,  `✖️ The answer is ${mul} ✖️`)
+  }else if(userMsg.startsWith('/div ')){
+      const division = userMsg.slice(5).trim();
+      const divi = division.replace("÷", "/")
+      const div = eval(divi);
+      bot.sendMessage(chatId,  `➗️ The answer is ${add} ➗️`)
+  }else if(userMsg.startsWith('/sqrt ')){
+      const root = userMsg.slice(6).trim();
+      const expression = root + "**0.5";
+      const sqrt = eval(expression);
+      bot.sendMessage(chatId,  `〰️ The answer is ${sqrt} 〰️`)
+  }else if(userMsg.startsWith('/rem ')){
+      const remainder = userMsg.slice(5).trim();
+      const remain = remainder.replace("&", "%");
+      const rem = eval(remainder);
+      bot.sendMessage(chatId,  `➕️ The answer is ${rem} ➕️`)
+  }else if(userMsg.startsWith('/round ')){
+      const rounding = userMsg.slice(7).trim();
+      const round = Math.round(parseInt(rounding));
+      bot.sendMessage(chatId,  `♻️ The answer is ${round} ♻️`)
+  }else if(userMsg.startsWith('/exp ')){
+      const exponent = userMsg.slice(5).trim();
+      const exp = eval(exponent);
+      bot.sendMessage(chatId,  `🔃 The answer is ${exp} 🔃`)
+  }else if(userMsg.startsWith('/gen ')){
+      const statement = userMsg.slice(5).trim();
+      const deal = statement.replaceAll("÷", "/").replaceAll("×", "*")
+      bot.sendMessage(chatId,  `🔃 The answer is ${exp} 🔃`)
   }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
