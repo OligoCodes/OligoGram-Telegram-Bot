@@ -97,7 +97,7 @@ bot.on('message', (msg) => {
 
 
 //image generation
-bot.on("unsplashImages", await (msg) => {
+bot.on("unsplashImages", async (msg) => {
    const chatId = msg.chat.id;
   
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
