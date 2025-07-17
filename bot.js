@@ -210,6 +210,9 @@ bot.on('message', async(msg) => {
       const correctSyntax = deal.replace(/[(]/g, "*(");
       const gen = eval(correctSyntax);
       bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
-  }else{
+  }else if(userMsg === '/joke'){
+       
+      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
+        }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
