@@ -215,13 +215,13 @@ bot.on('message', async(msg) => {
       const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
       const data = response.data;
       const type = data.type;
-      const setup = data.detup;
+      const setup = data.setup;
       const joke = data.punchline;
-      const emojis = ['','','','','','','','','','']
+      const emojis = ['🤣','😝','🤡','🤪','😂','💧','🃏','🎭','🗿','🥶']
       const Random = Math.floor(Math.random() * emojis.length)
       const jokeEmoji = emojis[Random]
 
-      bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`).then(() => {
+      bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'}).then(() => {
         bot.sendMessage(chatId, `${setup}...`).then(() => {
           bot.sendMessage(chatId, `${jokeEmoji} ${punchline} ${jokeEmoji}\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
         })
