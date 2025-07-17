@@ -221,10 +221,11 @@ bot.on('message', async(msg) => {
       const Random = Math.floor(Math.random() * emojis.length)
       const jokeEmoji = emojis[Random]
 
-      bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'}).then(() => {
-        bot.sendMessage(chatId, `${setup}...`);
-      });
-      bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+      bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
+      bot.sendMessage(chatId, `${setup}...`).then(() => {
+        bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {parse_mode: 'Markdown'});
+      })
+        
       }catch(e){
          console.error("Error ", e)
          bot.sendMessage(chatId, "🥶 Joke not found")
