@@ -218,13 +218,15 @@ bot.on('message', async(msg) => {
       const setup = data.setup;
       const joke = data.punchline;
       const emojis = ['🤣','😝','🤡','🤪','😂','💧','🃏','🎭','🗿','🥶']
-      const Random = Math.floor(Math.random() * emojis.length)
-      const jokeEmoji = emojis[Random]
+      const random = Math.floor(Math.random() * emojis.length)
+      const jokeEmoji = emojis[random];
+      const stickers = ['CAACAgQAAyEFAASTXAzcAAEM4HNoZkVFqCZVlugdEOolOOBf_LaAzgACBBQAAuzoWFAd7hpIus3k1zYE','CAACAgQAAx0CeDijFQABCr3taGYsZZcT7hTJjzYeoWJXnF65HGIAAmsXAALqqHBQYIoct8qxxxI2BA','','🤪','😂','💧','🃏','🎭','🗿','🥶']
+      const randome = Math.floor(Math.random() * stickers.length)
+      const stickerId = stickers[randome]
 
       bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
-      bot.sendMessage(chatId, `${setup}...`).then(() => {
-        bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {parse_mode: 'Markdown'});
-      })
+      bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n\n$_${setup}_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {parse_mode: 'Markdown'});
+      bot.sendSticker(chatId, ${stickerId});
         
       }catch(e){
          console.error("Error ", e)
