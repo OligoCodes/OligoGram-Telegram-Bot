@@ -226,7 +226,7 @@ bot.on('message', async(msg) => {
 
       bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
       bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n\n$_${setup}_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {parse_mode: 'Markdown'});
-      bot.sendSticker(chatId, ${stickerId});
+      bot.sendSticker(chatId, `${stickerId}`);
         
       }catch(e){
          console.error("Error ", e)
@@ -245,5 +245,5 @@ bot.on("newChatMembers", (msg) => {
     const user = member.first_name || "there";
     
     bot.sendMessage(chatId,  `Hello *${user}* , you are dearly welcome to this group!🤗\n Hope you are doing great?\n\n꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂` , {parse_mode: 'Markdown'});
-  });
-})
+  })
+});
