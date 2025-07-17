@@ -45,8 +45,8 @@ bot.on('message', (msg) => {
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
-     const musicUrl = `./Alive.mp3`;
-     const details = {caption : `I'm always alive buddy ${username}`, title: `Montagem Xonada`,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
+     const musicUrl = `https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/theme_01.mp3`;
+     const details = {caption : `I'm always alive buddy ${username}\n\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`, title: `Alive 👽` ,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
   }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
       bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
@@ -77,14 +77,16 @@ bot.on('message', (msg) => {
       const remainder = userMsg.slice(5).trim();
       const remain = remainder.replace("&", "%");
       const rem = eval(remainder);
-      bot.sendMessage(chatId,  `➕️ The answer is ${rem} ➕️`)
+      bot.sendMessage(chatId,  `➿️ The answer is ${rem} ➿️`)
   }else if(userMsg.startsWith('/round ')){
       const rounding = userMsg.slice(7).trim();
       const round = Math.round(parseInt(rounding));
       bot.sendMessage(chatId,  `♻️ The answer is ${round} ♻️`)
   }else if(userMsg.startsWith('/exp ')){
       const exponent = userMsg.slice(5).trim();
-      const exp = eval(exponent);
+      const num = exponent.charAt(2);
+      const expo = exponent.replace("^", `**${num}`)
+      const exp = eval(expo);
       bot.sendMessage(chatId,  `🔃 The answer is ${exp} 🔃`)
   }else if(userMsg.startsWith('/gen ')){
       const statement = userMsg.slice(5).trim();
@@ -153,9 +155,7 @@ bot.on('message', async (msg) => {
          console.error("Error ", e)
          bot.sendMessage(chatId, "🥶 Joke not found")
        }
-      }else{
-        bot.sendMessage(chatId,  `Stop saying ${userMsg} 🙃`);
-  }
+      }
 });
 
 
