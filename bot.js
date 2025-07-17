@@ -6,7 +6,8 @@ const token = process.env.token;
 
 const bot = new TelegramBot(token, {polling : true});
 
-bot.on('message', async(msg) => {
+//messages
+bot.on('message', (msg) => {
   const start = Date.now()
   const chatId = msg.chat.id;
   const userMsg = msg.text;
@@ -47,7 +48,158 @@ bot.on('message', async(msg) => {
      const musicUrl = `./Alive.mp3`;
      const details = {caption : `I'm always alive buddy ${username}`, title: `Montagem Xonada`,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
-  }else if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
+  }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
+      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+  }else if(userMsg.startsWith('/add ')){
+      const addition = userMsg.slice(5).trim();
+      const add = eval(addition);
+      bot.sendMessage(chatId,  `➕️ The answer is ${add} ➕️`);
+  }else if(userMsg.startsWith('/subt ')){
+      const subtraction = userMsg.slice(6).trim();
+      const subt = eval(subtraction);
+      bot.sendMessage(chatId,  `➖️ The answer is ${subt} ➖️`);
+  }else if(userMsg.startsWith('/mul ')){
+      const multiplication = userMsg.slice(5).trim();
+      const multi = multiplication.replace("×", "*")
+      const mul = eval(multi);
+      bot.sendMessage(chatId,  `✖️ The answer is ${mul} ✖️`)
+  }else if(userMsg.startsWith('/div ')){
+      const division = userMsg.slice(5).trim();
+      const divi = division.replace("÷", "/")
+      const div = eval(divi);
+      bot.sendMessage(chatId,  `➗️ The answer is ${add} ➗️`)
+  }else if(userMsg.startsWith('/sqrt ')){
+      const root = userMsg.slice(6).trim();
+      const expression = root + "**0.5";
+      const sqrt = eval(expression);
+      bot.sendMessage(chatId,  `〰️ The answer is ${sqrt} 〰️`)
+  }else if(userMsg.startsWith('/rem ')){
+      const remainder = userMsg.slice(5).trim();
+      const remain = remainder.replace("&", "%");
+      const rem = eval(remainder);
+      bot.sendMessage(chatId,  `➕️ The answer is ${rem} ➕️`)
+  }else if(userMsg.startsWith('/round ')){
+      const rounding = userMsg.slice(7).trim();
+      const round = Math.round(parseInt(rounding));
+      bot.sendMessage(chatId,  `♻️ The answer is ${round} ♻️`)
+  }else if(userMsg.startsWith('/exp ')){
+      const exponent = userMsg.slice(5).trim();
+      const exp = eval(exponent);
+      bot.sendMessage(chatId,  `🔃 The answer is ${exp} 🔃`)
+  }else if(userMsg.startsWith('/gen ')){
+      const statement = userMsg.slice(5).trim();
+      const deal = statement.replaceAll("÷", "/").replaceAll("×", "*");
+      const correctSyntax = deal.replace(/[(]/g, "*(");
+      const gen = eval(correctSyntax);
+      bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
+  }
+});
+
+
+//image generation
+bot.on("unsplashImages", await (msg) => {
+   const chatId = msg.chat.id;
+  
+   if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
+      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
+    }else if(userMsg.startsWith('/img ')){
+       const imageName = userMsg.slice(5).trim();
+       if(!imageName){
+      return bot.sendMessage(chatId, `❗️${imageName} is a bad/invalid image name`)
+    } 
+     try{
+       const unsplashKey = 'Q5sExZdXsNoniE1TMJ5vPePg6XHYpFthCtIjztPKhGY';
+       const unsplashUrl = `https://api.unsplash.com/photos/random?query=${encodeURIComponent(imageName)}&client_id=${unsplashKey}`;
+       const response = await axios.get(unsplashUrl);
+       const imageUrl = response.data.urls.regular;
+       const author = response.data.user.name;
+
+       bot.sendPhoto(chatId, imageUrl, {caption: `📸 Here is your ${imageName} image\n> Image by: _${author}_\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`, parse_mode: 'Markdown'});
+    }catch(err){
+       console.error("Error: ", err);
+       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
+    }
+}
+});
+
+
+//jokes
+bot.on("jokes", async (msg) => {
+  const chatId = msg.chat.id 
+  
+  if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
+      try{
+      const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
+      const data = response.data;
+      const type = data.type;
+      const setup = data.setup;
+      const joke = data.punchline;
+      const emojis = ['🤣','😝','🤡','🤪','😂','💧','🃏','🎭','🗿','🥶']
+      const random = Math.floor(Math.random() * emojis.length);
+      const jokeEmoji = emojis[random];
+      const stickers = ['CAACAgQAAyEFAASTXAzcAAEM4HNoZkVFqCZVlugdEOolOOBf_LaAzgACBBQAAuzoWFAd7hpIus3k1zYE','CAACAgQAAx0CeDijFQABCr3taGYsZZcT7hTJjzYeoWJXnF65HGIAAmsXAALqqHBQYIoct8qxxxI2BA','CAACAgUAAxkBAhy87Wh4-uPgIlYDxKEhbOzzppgGs75lAAKNCQAC7qGIVJJVLkU40Gc7NgQ','CAACAgQAAxkBAhy8_2h4-wMaVHz3TtC0xNuWq_GnFy6SAAKMFQACE6gpUq2xwgv9VN2cNgQ','CAACAgQAAx0CVU5WcgABFcRraGZSj2Ai0n_V-jgp60ox_pLYIToAAp8SAAL343BQEY0O391vM902BA','CAACAgQAAxkBAhy9QGh4-5adS7FRH26Z1RYUmhMEBNmoAAIjFgACqbSxUttQ6OsG3M5SNgQ','CAACAgQAAyEFAASKpiv4AAECp0doaUtBxE1pgfLF_ddqpMo9NR9YugACjRQAAj6xsFKHZNYDsivA-DYE','CAACAgQAAxkBAhy9ZWh4--v_5nd1TgX9CH9khQz7rtYsAAIJAAOj9eEjxn2-Qm_Btw02BA','CAACAgQAAxkBAhy9fGh4_ClnwSo7zM326AxQdLjuIrsEAAKBDQACoPAoUyMh44iwzRCZNgQ','CAACAgQAAyEFAASPUhSqAAL792hyhicqxZO6Shi0uVyHiEYLMx-zAAJQDwACyX3ZUmk9BfZLj_DfNgQ','CAACAgQAAxkBAhy9s2h4_KoL3IU-sijWV2kKEXTjLv5gAAIyDwACShkhUBr3mb1Sf_YgNgQ','CAACAgQAAx0CbIzk6AABFLQmaGZWx3H8GPiyQkJfJe95ZTVrn14AAmQKAAJsY8hTr-3X2sVdT2w2BA','CAACAgQAAxkBAhy90Gh4_OIfHMiBXoRixiOldYAfnKuEAAI0CwACtrPoU0QeSoZuvWZ1NgQ','CAACAgQAAyEFAASanNxoAAECF4dob6OxSIc5iquIvAT3sbBU7rtjKQACuBgAAuiPgFOopbMnWsglxTYE','CAACAgQAAxkBAhy-AAFoeP1Its3CfI8-Q8XARZZHVHY0XgAClRcAAtGmwVP5tR-H5gaUnTYE']
+      const randome = Math.floor(Math.random() * stickers.length)
+      const stickerId = stickers[randome]
+
+      bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
+      bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n\n$_${setup}_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {parse_mode: 'Markdown'});
+      bot.sendSticker(chatId, `${stickerId}`);
+        
+      }catch(e){
+         console.error("Error ", e)
+         bot.sendMessage(chatId, "🥶 Joke not found")
+       }
+      }else{
+        bot.sendMessage(chatId,  `Stop saying ${userMsg} 🙃`);
+  }
+});
+
+
+//weather
+bot.on("weatherInfo" , async (msg) => {
+  const chatId = msg.chat.id;
+
+  if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
+      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
+  }else if(userMsg.startsWith('/weather ')){
+     const city = userMsg.slice(9).trim();
+     if(!city){
+     return bot.sendMessage(chatId, `❗️Enter a Valid City (eg. /weather Melbourne)`);
+  }
+
+   try {
+       const apiKey = '6f0502b3360750ab87fa1531e26bf2c4';
+       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+       const response = await axios.get(apiUrl);
+       const data = response.data;
+
+       const temp = data.main.temp;
+       const feels = data.main.feels_like;
+       const humidity = data.main.humidity;
+       const condition = data.weather[0].description;
+       const wind = data.wind.speed;
+       const location = data.name;
+       const country = data.sys.country;
+       const iconCode = data.weather[0].icon;
+       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+       const message = `<b>╔⫷⫷⫷[👑 WEATHER INFO ]⫸⫸⫸</b><b>\n║ 🌤️ Weather in ${location}, ${country}</b><b>\n║ 🌡️ Temperature:</b> ${temp}°C<b>\n║ 🤗 Feels Like:</b> ${feels}°C<b>\n║ 💧 Humidity:</b> ${humidity}%<b>\n║ 🌬️ Wind Speed:</b> ${wind} m/s<b>\n║ ☁️ Condition:</b> ${condition}<b>\n║</b><b>\n║ 🖼️ <a href="${iconUrl}">View Icon</a></b><b>\n║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂</b>`;
+
+       bot.sendMessage(chatId, message, { parse_mode: 'HTML' });
+
+   } catch (err) {
+      console.error("Error: ", err);
+      bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
+   }
+  }
+});
+
+
+//crypto
+bot.on("crypto", async (msg) => {
+  const chatId = msg.chat.id;
+  
+  if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg === "/btc" || userMsg === "/btc@oligogram_bot"){
     try{
@@ -115,128 +267,10 @@ bot.on('message', async(msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💠`);
       }
-  }else if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
-      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
-  }else if(userMsg.startsWith('/weather ')){
-   const city = userMsg.slice(9).trim();
-   if(!city){
-    return bot.sendMessage(chatId, `❗️Enter a Valid City (eg. /weather Melbourne)`);
-  }
-
-   try {
-       const apiKey = '6f0502b3360750ab87fa1531e26bf2c4';
-       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
-       const response = await axios.get(apiUrl);
-       const data = response.data;
-
-       const temp = data.main.temp;
-       const feels = data.main.feels_like;
-       const humidity = data.main.humidity;
-       const condition = data.weather[0].description;
-       const wind = data.wind.speed;
-       const location = data.name;
-       const country = data.sys.country;
-       const iconCode = data.weather[0].icon;
-       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
-       const message = `<b>╔⫷⫷⫷[👑 WEATHER INFO ]⫸⫸⫸</b><b>\n║ 🌤️ Weather in ${location}, ${country}</b><b>\n║ 🌡️ Temperature:</b> ${temp}°C<b>\n║ 🤗 Feels Like:</b> ${feels}°C<b>\n║ 💧 Humidity:</b> ${humidity}%<b>\n║ 🌬️ Wind Speed:</b> ${wind} m/s<b>\n║ ☁️ Condition:</b> ${condition}<b>\n║</b><b>\n║ 🖼️ <a href="${iconUrl}">View Icon</a></b><b>\n║ ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂</b>`;
-
-       bot.sendMessage(chatId, message, { parse_mode: 'HTML' });
-
-   } catch (err) {
-      console.error("Error: ", err);
-      bot.sendMessage(chatId, '❌ City not found. Please check the name and try again.');
-   }
-  }else if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
-      bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
-  }else if(userMsg.startsWith('/img ')){
-    const imageName = userMsg.slice(5).trim();
-    if(!imageName){
-      return bot.sendMessage(chatId, `❗️${imageName} is a bad/invalid image name`)
-    } 
-    try{
-      const unsplashKey = 'Q5sExZdXsNoniE1TMJ5vPePg6XHYpFthCtIjztPKhGY';
-      const unsplashUrl = `https://api.unsplash.com/photos/random?query=${encodeURIComponent(imageName)}&client_id=${unsplashKey}`;
-      const response = await axios.get(unsplashUrl);
-      const imageUrl = response.data.urls.regular;
-      const author = response.data.user.name;
-
-      bot.sendPhoto(chatId, imageUrl, {caption: `📸 Here is your ${imageName} image\n> Image by: _${author}_\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`, parse_mode: 'Markdown'});
-    }catch(err){
-      console.error("Error: ", err);
-      bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
-    }
-  }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
-      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
-  }else if(userMsg.startsWith('/add ')){
-      const addition = userMsg.slice(5).trim();
-      const add = eval(addition);
-      bot.sendMessage(chatId,  `➕️ The answer is ${add} ➕️`);
-  }else if(userMsg.startsWith('/subt ')){
-      const subtraction = userMsg.slice(6).trim();
-      const subt = eval(subtraction);
-      bot.sendMessage(chatId,  `➖️ The answer is ${subt} ➖️`);
-  }else if(userMsg.startsWith('/mul ')){
-      const multiplication = userMsg.slice(5).trim();
-      const multi = multiplication.replace("×", "*")
-      const mul = eval(multi);
-      bot.sendMessage(chatId,  `✖️ The answer is ${mul} ✖️`)
-  }else if(userMsg.startsWith('/div ')){
-      const division = userMsg.slice(5).trim();
-      const divi = division.replace("÷", "/")
-      const div = eval(divi);
-      bot.sendMessage(chatId,  `➗️ The answer is ${add} ➗️`)
-  }else if(userMsg.startsWith('/sqrt ')){
-      const root = userMsg.slice(6).trim();
-      const expression = root + "**0.5";
-      const sqrt = eval(expression);
-      bot.sendMessage(chatId,  `〰️ The answer is ${sqrt} 〰️`)
-  }else if(userMsg.startsWith('/rem ')){
-      const remainder = userMsg.slice(5).trim();
-      const remain = remainder.replace("&", "%");
-      const rem = eval(remainder);
-      bot.sendMessage(chatId,  `➕️ The answer is ${rem} ➕️`)
-  }else if(userMsg.startsWith('/round ')){
-      const rounding = userMsg.slice(7).trim();
-      const round = Math.round(parseInt(rounding));
-      bot.sendMessage(chatId,  `♻️ The answer is ${round} ♻️`)
-  }else if(userMsg.startsWith('/exp ')){
-      const exponent = userMsg.slice(5).trim();
-      const exp = eval(exponent);
-      bot.sendMessage(chatId,  `🔃 The answer is ${exp} 🔃`)
-  }else if(userMsg.startsWith('/gen ')){
-      const statement = userMsg.slice(5).trim();
-      const deal = statement.replaceAll("÷", "/").replaceAll("×", "*");
-      const correctSyntax = deal.replace(/[(]/g, "*(");
-      const gen = eval(correctSyntax);
-      bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
-  }else if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
-      try{
-      const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
-      const data = response.data;
-      const type = data.type;
-      const setup = data.setup;
-      const joke = data.punchline;
-      const emojis = ['🤣','😝','🤡','🤪','😂','💧','🃏','🎭','🗿','🥶']
-      const random = Math.floor(Math.random() * emojis.length);
-      const jokeEmoji = emojis[random];
-      const stickers = ['CAACAgQAAyEFAASTXAzcAAEM4HNoZkVFqCZVlugdEOolOOBf_LaAzgACBBQAAuzoWFAd7hpIus3k1zYE','CAACAgQAAx0CeDijFQABCr3taGYsZZcT7hTJjzYeoWJXnF65HGIAAmsXAALqqHBQYIoct8qxxxI2BA','CAACAgUAAxkBAhy87Wh4-uPgIlYDxKEhbOzzppgGs75lAAKNCQAC7qGIVJJVLkU40Gc7NgQ','CAACAgQAAxkBAhy8_2h4-wMaVHz3TtC0xNuWq_GnFy6SAAKMFQACE6gpUq2xwgv9VN2cNgQ','CAACAgQAAx0CVU5WcgABFcRraGZSj2Ai0n_V-jgp60ox_pLYIToAAp8SAAL343BQEY0O391vM902BA','CAACAgQAAxkBAhy9QGh4-5adS7FRH26Z1RYUmhMEBNmoAAIjFgACqbSxUttQ6OsG3M5SNgQ','CAACAgQAAyEFAASKpiv4AAECp0doaUtBxE1pgfLF_ddqpMo9NR9YugACjRQAAj6xsFKHZNYDsivA-DYE','CAACAgQAAxkBAhy9ZWh4--v_5nd1TgX9CH9khQz7rtYsAAIJAAOj9eEjxn2-Qm_Btw02BA','CAACAgQAAxkBAhy9fGh4_ClnwSo7zM326AxQdLjuIrsEAAKBDQACoPAoUyMh44iwzRCZNgQ','CAACAgQAAyEFAASPUhSqAAL792hyhicqxZO6Shi0uVyHiEYLMx-zAAJQDwACyX3ZUmk9BfZLj_DfNgQ','CAACAgQAAxkBAhy9s2h4_KoL3IU-sijWV2kKEXTjLv5gAAIyDwACShkhUBr3mb1Sf_YgNgQ','CAACAgQAAx0CbIzk6AABFLQmaGZWx3H8GPiyQkJfJe95ZTVrn14AAmQKAAJsY8hTr-3X2sVdT2w2BA','CAACAgQAAxkBAhy90Gh4_OIfHMiBXoRixiOldYAfnKuEAAI0CwACtrPoU0QeSoZuvWZ1NgQ','CAACAgQAAyEFAASanNxoAAECF4dob6OxSIc5iquIvAT3sbBU7rtjKQACuBgAAuiPgFOopbMnWsglxTYE','CAACAgQAAxkBAhy-AAFoeP1Its3CfI8-Q8XARZZHVHY0XgAClRcAAtGmwVP5tR-H5gaUnTYE']
-      const randome = Math.floor(Math.random() * stickers.length)
-      const stickerId = stickers[randome]
-
-      bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
-      bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n\n$_${setup}_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {parse_mode: 'Markdown'});
-      bot.sendSticker(chatId, `${stickerId}`);
-        
-      }catch(e){
-         console.error("Error ", e)
-         bot.sendMessage(chatId, "🥶 Joke not found")
-       }
-      }else{
-        bot.sendMessage(chatId,  `Stop saying ${userMsg} 🙃`);
   }
 });
 
+//new members 
 bot.on("newChatMembers", (msg) => {
   const chatId = msg.chat.id;
   const newMembers = msg.new_chat_members;
