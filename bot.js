@@ -167,7 +167,7 @@ bot.on('message', async(msg) => {
       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
   }else if(userMsg === "/math"){
-      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else if(userMsg.startsWith('/add ')){
       const addition = userMsg.slice(5).trim();
       const add = eval(additon);
@@ -207,7 +207,9 @@ bot.on('message', async(msg) => {
   }else if(userMsg.startsWith('/gen ')){
       const statement = userMsg.slice(5).trim();
       const deal = statement.replaceAll("÷", "/").replaceAll("×", "*")
-      bot.sendMessage(chatId,  `🔃 The answer is ${exp} 🔃`)
+      const correctSyntax = deal.replace(/(\d)/g , "$1*");
+      const gen = eval(correctSyntax);
+      bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
   }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
