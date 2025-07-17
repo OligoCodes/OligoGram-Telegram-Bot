@@ -20,7 +20,7 @@ bot.on('message', async(msg) => {
   if (userMsg === "/start"){
     bot.sendMessage(chatId, `🖐 Welcome to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭, Please follow my OligoTech Channel at https://t.me/OligoTech for more tech updates and insights.\nType /help to see what I can do.`);
   }else if(userMsg === "/help"){
-    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈/img - Displays a random image 🖼\n◈ /crypto - Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /play ⇒ Play a song from title \n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
+    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈/img - Displays a random image 🖼\n◈ /crypto - Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /play ⇒ Play a song from title(not active yet)\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /math - Basic math calculations 🔢\n\n꧁✨️  𝑷𝒐𝒘𝒆𝒓𝒆𝒅  𝒃𝒚  𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉  ✨️꧂`);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n║  ◈ /myInfo - Get your own info.\n║\n║  ◈ /botOwnerInfo - Know more about the ║ bot creator.\n║\n╠════🔗FOLLOW MY GITHUB════⧈\n║\n║ 🐱 GitHub: github.com/oligocodes👾\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg === "/ping"){
@@ -166,46 +166,8 @@ bot.on('message', async(msg) => {
       console.error("Error: ", err);
       bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
-  }else if (userMsg.startsWith('/play ')) {
-  const songName = userMsg.slice(6).trim();
-  if (!songName) {
-    return bot.sendMessage(chatId, '❗️ Use /play <song title>');
-  }
-
-  try {
-    // STEP 1: Search for the song
-    const searchRes = await axios.get(`https://saavn.dev/api/search?query=${encodeURIComponent(songName)}`);
-    const results = searchRes?.data?.data?.results;
-
-    if (!Array.isArray(results) || results.length === 0) {
-      return bot.sendMessage(chatId, `🚫 No results found for "${songName}". Try another title.`);
-    }
-
-    const firstResult = results[0];
-
-    // STEP 2: Fetch song details using the ID
-    const detailRes = await axios.get(`https://saavn.dev/api/songs/${firstResult.id}`);
-    const songDetail = detailRes?.data?.data;
-
-    if (!songDetail || !songDetail.media_url) {
-      console.log('❗ No media_url found:', songDetail);
-      return bot.sendMessage(chatId, '🚫 No downloadable audio link available for this song.');
-    }
-
-    // STEP 3: Send audio
-    await bot.sendMessage(chatId, `🎧 Fetching "${songDetail.title}" by ${songDetail.primary_artists}...`);
-    return bot.sendAudio(chatId, songDetail.media_url, {
-      title: songDetail.title,
-      performer: songDetail.primary_artists,
-      thumb: songDetail.image_url,
-      caption: `🎵 *${songDetail.title}*\n👤 *${songDetail.primary_artists}*\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`,
-      parse_mode: 'Markdown'
-    });
-
-  } catch (err) {
-    console.error('❌ Error in /play:', err.message || err);
-    return bot.sendMessage(chatId, '⚠️ Could not fetch the song—please try again.');
-  }
+  }else if(userMsg === "/math"){
+      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️ /subt a-b ⇒ a minus b\n║✖️ /mul a*b ⇒ a multiplied by b\n║➗️ /div a÷b ⇒ a divided by b\n║〰️ /sqrt a ⇒ square root of a\n║➿️ /rem a//b ⇒ remainder of a/b\n║♻️ /round a ⇒ round a\n║🔃 /exp a^b ⇒ a to the power b\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else{
       bot.sendMessage(chatId, `I don't understand that yet 😑, I am still under development by github.com/oligocodes\nAnyways try using /help for a list of commands ★ `);  }
   });
