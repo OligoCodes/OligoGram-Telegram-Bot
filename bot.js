@@ -112,7 +112,9 @@ bot.on('message', (msg) => {
 bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
    const userMsg = msg.text;
-  
+
+   if (typeof userMsg !== "string")
+     return;
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
     }else if(userMsg.startsWith('/img ')){
