@@ -118,7 +118,7 @@ bot.on('message', async (msg) => {
     }else if(userMsg.startsWith('/img ')){
        const imageName = userMsg.slice(5).trim();
        if(!imageName){
-      return bot.sendMessage(chatId, `❗️${imageName} is a bad/invalid image name`)
+      return bot.sendMessage(chatId, `❗️ Please provide a valid image name`)
     } 
      try{
        const unsplashKey = 'Q5sExZdXsNoniE1TMJ5vPePg6XHYpFthCtIjztPKhGY';
