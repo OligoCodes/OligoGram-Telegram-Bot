@@ -54,9 +54,11 @@ bot.on('message', (msg) => {
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
-     const musicUrl = `https://audio.jukehost.co.uk/v9WTpehCB4JVTY5i1DYLLUSOvavZMOmy`;
+     const musicUrl = `https://audio.jukehost.co.uk/v9WTpehCB4JVTY5i1DYLLUSOvavZMOmy.mp3`;
      const details = {caption : `I'm always alive ${username} 👻👻👻\n\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`, title: `Alive 👽` ,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
+  }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
+    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
       bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else if(userMsg.startsWith('/add ')){
@@ -112,9 +114,9 @@ bot.on('message', (msg) => {
 bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
    const userMsg = msg.text;
-   const chatType = msg.chat.type;
-  
-   if (!userMsg || (chatType === 'channel')) return; 
+
+   if (typeof userMsg !== "string")
+     return;
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
     }else if(userMsg.startsWith('/img ')){
@@ -142,9 +144,7 @@ bot.on('message', async (msg) => {
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-  const chatType = msg.chat.type;
-
-  if (!userMsg || (chatType === 'channel')) return; 
+  
   if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
       try{
       const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
@@ -175,9 +175,7 @@ bot.on('message', async (msg) => {
 bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-  const chatType = msg.chat.type;
 
-  if (!userMsg || (chatType === 'channel')) return; 
   if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/weather ')){
@@ -214,27 +212,23 @@ bot.on('message' , async (msg) => {
 });
 
 
-//crypto
-bot.on('message', async (msg) => {
-  const chatId = msg.chat.id;
-  const userMsg = msg.text;
-  const chatType = msg.chat.type;
-
-  if (!userMsg || (chatType === 'channel')) return; 
-  if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
-    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
-  }else if(userMsg === "/btc" || userMsg === "/btc@oligogram_bot"){
+//crypto call
+bot.on('callback_query', async (query) => {
+  const chatId = query.message.chat.id;
+  const data = query.data;
+  
+  if(data === "/btc" || data === "/btc@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd`);
-      const price = response.data.bitcoin.usd;
+      const btcPrice = response.data.bitcoin.usd;
 
-      bot.sendMessage(chatId, `✅️ The current price of BITCOIN💰 is\n   ❂⊣ $${price} ⊢❂`);
+      bot.sendMessage(chatId, `✅️ The current price of BITCOIN💰 is\n   ❂⊣ $${btcPrice} ⊢❂`);
       }catch(e){
 
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto 🧠`);
       }
-  }else if(userMsg === "/eth" || userMsg === "/eth@oligogram_bot"){
+  }else if(data === "/eth" || data === "/eth@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`)
       const ethPrice = response.data.ethereum.usd;
@@ -245,10 +239,10 @@ bot.on('message', async (msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🧠`);
       }
-  }else if(userMsg === "/sol" || userMsg === "/sol@oligogram_bot"){
+  }else if(data === "/sol" || data === "/sol@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd`)
-      const solPrice = response.data.solana.usd;
+      const solPrice =  response.data.solana.usd;
 
       bot.sendMessage(chatId, `✅️ The current price of SOLANA 🔮  is\n   ❂⊣ $${solPrice} ⊢❂`);
       }catch(e){
@@ -256,7 +250,7 @@ bot.on('message', async (msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🔮`);
       }
-  }else if(userMsg === "/bnb" || userMsg === "/bnb@oligogram_bot"){
+  }else if(data === "/bnb" || data === "/bnb@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`);
       const bnbPrice = response.data.binancecoin.usd;
@@ -267,7 +261,7 @@ bot.on('message', async (msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto💢`);
       }
-  }else if(userMsg === "/ada" || userMsg === "/ada@oligogram_bot"){
+  }else if(data === "/ada" || data === "/ada@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd`);
       const adaPrice = response.data.cardano.usd;
@@ -278,7 +272,7 @@ bot.on('message', async (msg) => {
       console.error("Error: ", e);
       bot.sendMessage(chatId, `🚫Failed to fetch crypto🔮`);
       }
-  }else if(userMsg === "/xrp" || userMsg === "xrp@oligogram_bot"){
+  }else if(data === "/xrp" || data === "xrp@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd`);
       const xrpPrice = response.data.ripple.usd;
@@ -296,7 +290,7 @@ bot.on('message', async (msg) => {
 bot.on('new_chat_members', (msg) => {
   const chatId = msg.chat.id;
   const newMembers = msg.new_chat_members;
-
+  
   newMembers.forEach( member => {
     const user = member.first_name || "there";
     
