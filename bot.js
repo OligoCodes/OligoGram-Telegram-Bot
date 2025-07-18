@@ -129,7 +129,7 @@ bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
    const userMsg = msg.text;
 
-   if (typeof userMsg !== "string")
+   if (!userMsg || (chatType === 'channel')) return; 
      return;
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
@@ -158,7 +158,8 @@ bot.on('message', async (msg) => {
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-  
+
+  if (!userMsg || (chatType === 'channel')) return; 
   if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
       try{
       const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
@@ -190,6 +191,7 @@ bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
 
+  if (!userMsg || (chatType === 'channel')) return; 
   if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/weather ')){
@@ -289,6 +291,17 @@ bot.on('callback_query', async (query) => {
   }
 });
 //new members 
+bot.on('left_chat_members', (msg) => {
+  const chatId = msg.chat.id;
+  const leftMembers = msg.left_chat_members;
+  
+  leftMembers.forEach( member => {
+    const user = member.first_name || "there";
+    
+    bot.sendMessage(chatId,  `Arigato *${user}* , till we meet again om this group!🫡\n Please share the group link.\n\n꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂` , {parse_mode: 'Markdown'});
+  })
+});
+
 bot.on('new_chat_members', (msg) => {
   const chatId = msg.chat.id;
   const newMembers = msg.new_chat_members;
@@ -299,3 +312,4 @@ bot.on('new_chat_members', (msg) => {
     bot.sendMessage(chatId,  `Hello *${user}* , you are dearly welcome to this group!🤗\n Hope you are doing great?\n\n꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂` , {parse_mode: 'Markdown'});
   })
 });
+
