@@ -112,9 +112,9 @@ bot.on('message', (msg) => {
 bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
    const userMsg = msg.text;
-
-   if (typeof userMsg !== "string")
-     return;
+   const chatType = msg.chat.type;
+  
+   if (!userMsg || (chatType === 'channel')) return; 
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
     }else if(userMsg.startsWith('/img ')){
@@ -142,7 +142,9 @@ bot.on('message', async (msg) => {
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-  
+  const chatType = msg.chat.type;
+
+  if (!userMsg || (chatType === 'channel')) return; 
   if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
       try{
       const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
@@ -173,7 +175,9 @@ bot.on('message', async (msg) => {
 bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
+  const chatType = msg.chat.type;
 
+  if (!userMsg || (chatType === 'channel')) return; 
   if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/weather ')){
@@ -214,13 +218,15 @@ bot.on('message' , async (msg) => {
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-  
+  const chatType = msg.chat.type;
+
+  if (!userMsg || (chatType === 'channel')) return; 
   if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg === "/btc" || userMsg === "/btc@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd`);
-      const price = await response.data.bitcoin.usd;
+      const price = response.data.bitcoin.usd;
 
       bot.sendMessage(chatId, `✅️ The current price of BITCOIN💰 is\n   ❂⊣ $${price} ⊢❂`);
       }catch(e){
@@ -231,7 +237,7 @@ bot.on('message', async (msg) => {
   }else if(userMsg === "/eth" || userMsg === "/eth@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`)
-      const ethPrice = await response.data.ethereum.usd;
+      const ethPrice = response.data.ethereum.usd;
 
       bot.sendMessage(chatId, `✅️ The current price of ETHEREUM 🧠  is\n   ❂⊣ $${ethPrice} ⊢❂`);
       }catch(e){
@@ -242,7 +248,7 @@ bot.on('message', async (msg) => {
   }else if(userMsg === "/sol" || userMsg === "/sol@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd`)
-      const solPrice = await response.data.solana.usd;
+      const solPrice = response.data.solana.usd;
 
       bot.sendMessage(chatId, `✅️ The current price of SOLANA 🔮  is\n   ❂⊣ $${solPrice} ⊢❂`);
       }catch(e){
@@ -253,7 +259,7 @@ bot.on('message', async (msg) => {
   }else if(userMsg === "/bnb" || userMsg === "/bnb@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`);
-      const bnbPrice = await response.data.binancecoin.usd;
+      const bnbPrice = response.data.binancecoin.usd;
 
       bot.sendMessage(chatId, `✅️ The current price of BINANCE COIN 🪙 is\n   ❂⊣ $${bnbPrice} ⊢❂`);
       }catch(e){
@@ -264,7 +270,7 @@ bot.on('message', async (msg) => {
   }else if(userMsg === "/ada" || userMsg === "/ada@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd`);
-      const adaPrice = await response.data.cardano.usd;
+      const adaPrice = response.data.cardano.usd;
 
       bot.sendMessage(chatId, `✅️ The current price of CARDANO 💢  is\n   ❂⊣ $${adaPrice} ⊢❂`);
       }catch(e){
@@ -275,7 +281,7 @@ bot.on('message', async (msg) => {
   }else if(userMsg === "/xrp" || userMsg === "xrp@oligogram_bot"){
     try{
       const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd`);
-      const xrpPrice = await response.data.ripple.usd;
+      const xrpPrice = response.data.ripple.usd;
 
       bot.sendMessage(chatId, `✅️ The current price of RIPPLE 💠  is\n   ❂⊣ $${xrpPrice} ⊢❂`);
       }catch(e){
@@ -290,7 +296,7 @@ bot.on('message', async (msg) => {
 bot.on('new_chat_members', (msg) => {
   const chatId = msg.chat.id;
   const newMembers = msg.new_chat_members;
-  
+
   newMembers.forEach( member => {
     const user = member.first_name || "there";
     
