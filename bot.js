@@ -63,11 +63,11 @@ bot.on('message', (msg) => {
          inline_keyboard:[
            //row 1⬇️
            [
-             {text: "*BTC*💰", callback_data: "/btc"}, {text: "*ETH*💠", callback_data: "/eth"}, {text: "*SOL*🔮", callback_data: "/sol"}
+             {text: "𝗕𝗧𝗖💰", callback_data: "/btc"}, {text: "𝗘𝗧𝗛💠", callback_data: "/eth"}, {text: "𝗦𝗢𝗟🔮", callback_data: "/sol"}
            ],
            //row 2 ⬇️
            [
-             {text: "*BNB*🪙", callback_data: "/bnb"}, {text: "*ADA*💢", callback_data: "/ada"}, {text: "*XRP*🔆", callback_data: "/xrp"}
+             {text: "𝗕𝗡𝗕🪙", callback_data: "/bnb"}, {text: "𝗔𝗗𝗔💢", callback_data: "/ada"}, {text: "𝗫𝗥𝗣🔆", callback_data: "/xrp"}
            ]
          ] 
        }
