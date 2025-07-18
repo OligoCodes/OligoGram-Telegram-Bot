@@ -58,7 +58,21 @@ bot.on('message', (msg) => {
      const details = {caption : `I'm always alive ${username} 👻👻👻\n\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`, title: `Alive 👽` ,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
   }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
-    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 CRYPTO PULSE]⫸⫸⫸\n║\n║◈ /btc ⇒ Bitcoin current price 💰\n║ ◈ /eth ⇒ Ethereum current price 🧠\n║ ◈ /sol ⇒ Solana current price 🔮\n║ ◈ /bnb ⇒ Binance coin current price 🪙\n║ ◈ /ada ⇒ Cardano current price 💢\n║ ◈ /xrp ⇒ Ripple current price💠\n║\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
+     const croyce = {
+       reply_markup: {
+         inline_keyboard:[
+           //row 1⬇️
+           [
+             {text: "*BTC*💰", callback_data: "/btc"}, {text: "*ETH*💠", callback_data: "/eth"}, {text: "*SOL*🔮", callback_data: "/sol"}
+           ],
+           //row 2 ⬇️
+           [
+             {text: "*BNB*🪙", callback_data: "/bnb"}, {text: "*ADA*💢", callback_data: "/ada"}, {text: "*XRP*🔆", callback_data: "/xrp"}
+           ]
+         ] 
+       }
+     }
+     bot.sendMessage(chatId, `📊 Welcome ${userName} to the OligoTech Crypto Dashboard\n\nTrack real-time prices for the top cryptocurrencies, including Bitcoin, Ethereum, Solana, and more.\n\nTap any coin below to view its current market value.\n\n🔄 Data updates automatically | 📡 Powered by OligoTech 🇬🇭 `, croyce, {parse_mode: 'Markdown});
   }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
       bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else if(userMsg.startsWith('/add ')){
