@@ -143,6 +143,17 @@ bot.on('message', async (msg) => {
        const unsplashKey = 'Q5sExZdXsNoniE1TMJ5vPePg6XHYpFthCtIjztPKhGY';
        const unsplashUrl = `https://api.unsplash.com/photos/random?query=${encodeURIComponent(imageName)}&client_id=${unsplashKey}`;
        const response = await axios.get(unsplashUrl);
+       if(!response) {
+         const okBtn = {
+           reply_markup: {
+             inline_keyboard: [
+               [
+                 {text: "𝗢𝗞" , callback_data: "ok"} 
+             ]
+           }
+         }
+         return bot.sendMessage(chatId,  `Too many images have been requested,  please wait for tomorrow`, okBtn)
+       }
        const imageUrl = response.data.urls.regular;
        const author = response.data.user.name;
 
@@ -151,8 +162,19 @@ bot.on('message', async (msg) => {
        console.error("Error: ", err);
        bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
-}
+}jm
 });
+
+//image generation call 
+bot.on('callback_query' , (query) => {
+  const chatId = query.message.chat.id;
+  const msgId = query.message.message_id;
+  const data = query.data;
+
+  if(data === "ok" || data === "ok@oligogram_bot"){
+    bot.deleteMessage(chatId, msgId);
+  }
+})
 
 
 //jokes
