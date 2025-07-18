@@ -54,8 +54,8 @@ bot.on('message', (msg) => {
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
-     const musicUrl = `https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/theme_01.mp3`;
-     const details = {caption : `I'm always alive buddy ${username}\n\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`, title: `Alive 👽` ,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
+     const musicUrl = `https://audio.jukehost.co.uk/v9WTpehCB4JVTY5i1DYLLUSOvavZMOmy`;
+     const details = {caption : `I'm always alive ${username} 👻👻👻\n\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`, title: `Alive 👽` ,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
   }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
       bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
@@ -93,7 +93,7 @@ bot.on('message', (msg) => {
       bot.sendMessage(chatId,  `♻️ The answer is ${round} ♻️`)
   }else if(userMsg.startsWith('/exp ')){
       const exponent = userMsg.slice(5).trim();
-      const num = exponent.charAt(2);
+      const num = exponent.charAt(3);
       const expo = exponent.replace("^", `**${num}`)
       const exp = eval(expo);
       bot.sendMessage(chatId,  `🔃 The answer is ${exp} 🔃`)
