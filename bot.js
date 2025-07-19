@@ -238,7 +238,7 @@ const chatType = msg.chat.type;
        const viewIconButton = {
          reply_markup:{
            inline_keyboard: [
-             [{text: "🖼️ View Icon", url: `${IconUrl}`}]
+             [{text: "🖼️ View Icon", url: `${iconUrl}`}]
            ]
          }
        };
