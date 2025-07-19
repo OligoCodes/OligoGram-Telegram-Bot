@@ -124,6 +124,7 @@ bot.on('message', (msg) => {
   }
 });
 
+//projects mine
 bot.on('message' , (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
@@ -143,7 +144,7 @@ bot.on('message' , (msg) => {
     };
     bot.sendMessage(chatId, message, button);
   }else if(userMsg === '/qualc' || userMsg === '/qualc@oligogram_bot'){
-    const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
+    const message = '🔹 QUALCULATOR\n\n🧮 Minimal, fast math calculator — no distractions.\n\n🔧 Developed by Joseph Bonsu';
     const button = {
       reply_markup: {
         inline_keyboard:[
@@ -155,7 +156,7 @@ bot.on('message' , (msg) => {
     };
     bot.sendMessage(chatId, message, button);
   }else if(userMsg === '/bot' || userMsg === '/bot@oligogram_bot'){
-    const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
+    const message = '🔹 OLIGOBOT\n\n🤖 Smart AI chatbot , ask anything, get answers.\n🔧 Developed by Joseph Bonsu';
     const button = {
       reply_markup: {
         inline_keyboard:[
@@ -167,7 +168,7 @@ bot.on('message' , (msg) => {
     };
     bot.sendMessage(chatId, message, button);
   }else if(userMsg === '/pgen' || userMsg === '/pgen@oligogram_bot'){
-    const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
+    const message = '🔹 PGEN\n\n🔐 Generate strong passwords by length.\n🔧 Developed by Joseph Bonsu';
     const button = {
       reply_markup: {
         inline_keyboard:[
@@ -179,7 +180,7 @@ bot.on('message' , (msg) => {
     };
     bot.sendMessage(chatId, message, button);
   }else if(userMsg === '/tokfetch' || userMsg === '/tokfetch@oligogram_bot'){
-    const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
+    const message = '🔹 PGEN\n\n🎬 Download TikTok videos/audio with or without watermark.\n🔧 Developed by Joseph Bonsu';
     const button = {
       reply_markup: {
         inline_keyboard:[
@@ -191,7 +192,7 @@ bot.on('message' , (msg) => {
     };
     bot.sendMessage(chatId, message, button);
   }else if(userMsg === '/convert' || userMsg === '/convert@oligogram_bot'){
-    const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
+    const message = '🔹 Monexia\n\n💱 Convert currencies fast, anytime, anywhere.\n🔧 Developed by Joseph Bonsu';
     const button = {
       reply_markup: {
         inline_keyboard:[
@@ -203,7 +204,7 @@ bot.on('message' , (msg) => {
     };
     bot.sendMessage(chatId, message, button);
   }else if(userMsg === '/randomoji' || userMsg === '/randomoji@oligogram_bot'){
-    const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
+    const message = '🔹 RandoMoji\n\n🎲 Tap to get totally random emojis — endless fun.\n🔧 Developed by Joseph Bonsu';
     const button = {
       reply_markup: {
         inline_keyboard:[
