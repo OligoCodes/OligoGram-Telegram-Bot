@@ -131,7 +131,6 @@ bot.on('message', async (msg) => {
    const chatType = msg.chat.type;
 
    if (!userMsg || (chatType === 'channel')) return; 
-     return;
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
     }else if(userMsg.startsWith('/img ')){
@@ -143,17 +142,7 @@ bot.on('message', async (msg) => {
        const unsplashKey = 'Q5sExZdXsNoniE1TMJ5vPePg6XHYpFthCtIjztPKhGY';
        const unsplashUrl = `https://api.unsplash.com/photos/random?query=${encodeURIComponent(imageName)}&client_id=${unsplashKey}`;
        const response = await axios.get(unsplashUrl);
-       if(!response) {
-         const okBtn = {
-           reply_markup: {
-             inline_keyboard: [
-               [
-                 {text: "𝗢𝗞" , callback_data: "ok"} 
-             ]
-           }
-         };
-         return bot.sendMessage(chatId,  `Too many images have been requested,  please wait for tomorrow`, okBtn)
-       };
+       if (!response) {const okBtn = {reply_markup: {inline_keyboard: [[{text: "𝗢𝗞" , callback_data: "ok"}]]}return bot.sendMessage(chatId,  `Too many images have been requested,  please wait for tomorrow`, okBtn);}
        const imageUrl = response.data.urls.regular;
        const author = response.data.user.name;
 
