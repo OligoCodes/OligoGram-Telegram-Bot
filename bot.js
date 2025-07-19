@@ -151,9 +151,9 @@ bot.on('message', async (msg) => {
                  {text: "𝗢𝗞" , callback_data: "ok"} 
              ]
            }
-         }
+         };
          return bot.sendMessage(chatId,  `Too many images have been requested,  please wait for tomorrow`, okBtn)
-       }
+       };
        const imageUrl = response.data.urls.regular;
        const author = response.data.user.name;
 
@@ -162,7 +162,7 @@ bot.on('message', async (msg) => {
        console.error("Error: ", err);
        bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
     }
-}jm
+}
 });
 
 //image generation call 
