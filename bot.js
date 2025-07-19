@@ -148,19 +148,7 @@ bot.on('message' , (msg) => {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '🔍 𝗩𝗶𝗲𝘄 𝗪𝗵𝗮𝘀𝗽𝘆', url: 'https://qualculator.vercel.app/'}
-          ]
-        ]
-      }
-    };
-    bot.sendMessage(chatId, message, button);
-  }else if(userMsg === '/qualc' || userMsg === '/qualc@oligogram_bot'){
-    const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
-    const button = {
-      reply_markup: {
-        inline_keyboard:[
-          [
-            {text: '🔍 𝗩𝗶𝗲𝘄 𝗪𝗵𝗮𝘀𝗽𝘆', url: 'https://qualculator.vercel.app/'}
+            {text: '🧮 𝗧𝗿𝘆 𝗤𝗨𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗢𝗥', url: 'https://qualculator.vercel.app/'}
           ]
         ]
       }
@@ -172,7 +160,7 @@ bot.on('message' , (msg) => {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '🔍 𝗩𝗶𝗲𝘄 𝗪𝗵𝗮𝘀𝗽𝘆', url: 'https://oligo-bot.vercel.app/'}
+            {text: '💬 𝗖𝗵𝗮𝘁 𝘄𝗶𝘁𝗵 𝗢𝗟𝗜𝗚𝗢𝗕𝗢𝗧', url: 'https://oligo-bot.vercel.app/'}
           ]
         ]
       }
@@ -196,7 +184,7 @@ bot.on('message' , (msg) => {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '🔍 𝗩𝗶𝗲𝘄 𝗪𝗵𝗮𝘀𝗽𝘆', url: 'https://tokfetch.vercel.app/'}
+            {text: '🎬 𝗨𝘀𝗲 𝗧𝗼𝗸𝗙𝗲𝘁𝗰𝗵', url: 'https://tokfetch.vercel.app/'}
           ]
         ]
       }
@@ -208,19 +196,19 @@ bot.on('message' , (msg) => {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '🔍 𝗩𝗶𝗲𝘄 𝗪𝗵𝗮𝘀𝗽𝘆', url: 'https://monexia.vercel.app/'}
+            {text: '💱 𝗖𝗼𝗻𝘃𝗲𝗿𝘁 𝘄𝗶𝘁𝗵 𝗠𝗼𝗻𝗲𝘅𝗶𝗮', url: 'https://monexia.vercel.app/'}
           ]
         ]
       }
     };
     bot.sendMessage(chatId, message, button);
-  }else if(userMsg === '/emoji' || userMsg === '/emoji@oligogram_bot'){
+  }else if(userMsg === '/randomoji' || userMsg === '/randomoji@oligogram_bot'){
     const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by Joseph Bonsu';
     const button = {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '🔍 𝗩𝗶𝗲𝘄 𝗪𝗵𝗮𝘀𝗽𝘆', url: 'https://randomoji-two.vercel.app/'}
+            {text: '🔍 🎲 𝗚𝗲𝘁 𝗥𝗮𝗻𝗱𝗼𝗠𝗼𝗷𝗶', url: 'https://randomoji-two.vercel.app/'}
           ]
         ]
       }
