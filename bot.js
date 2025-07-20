@@ -272,6 +272,31 @@ bot.on('message', async (msg) => {
 });
 
 
+//bible
+bot.on('message', async (msg) => {
+  const chatId = msg.chat.id;
+  const userMsg = msg.text;
+
+  if (userMsg.startsWith('/Bible ')) {
+    const verse = userMsg.slice(7).trim(); // e.g., 'john 3:16'
+    try{
+    const response = await axios.get(`https://bible-api.com/${encodeURIComponent(query)}?translation=kjv`);
+    const data = res.data;
+    if (data && data.verses && data.text) {
+          const verseText = data.verses.map(v => `${v.text.trim()} - ${v.reference} ${v.chapter}:${v.verse}`).join('\n');
+          bot.sendMessage(chatId, verseText);
+        } else {
+          bot.sendMessage(chatId, "Sorry, I couldn't find that verse.");
+    }
+    }catch(e){
+        bot.sendMessage(chatId, "⚠️ An error occurred while fetching the scripture");
+        console.error("Error ", e);
+      });
+       }
+  }
+});
+
+
 //image generation
 bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
