@@ -228,14 +228,14 @@ bot.on('message' , (msg) => {
 });
 
 //dictionary
-bot.on('message', async(msg) => {
+bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
   
   if(!userMsg || chatType === 'channel') return;
   if (userMsg.startsWith('/define ')){
-    const word = userMsg.slice(8);
+    const word = userMsg.slice(8).trim();
     if(!word){
       return bot.sendMessage(chatId,  `Word not found 🚫`)
     }
@@ -243,7 +243,7 @@ bot.on('message', async(msg) => {
     try{
       const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       
-      data.forEach( datum => {
+      words = data.forEach( datum => {
   
 /*  console.log(datum.meanings)*/
   
@@ -252,8 +252,9 @@ bot.on('message', async(msg) => {
    /* console.log(dam.definitions)*/
     
       dam.definitions.forEach(def => {
-      e = ['📚','📕','📗','📙','💡','📝'][Math.floor(Math.random()*['📚','📕','📗','📙','💡','�'].length)]
-       bot.sendMessageg(chatId, `${e} .${def.definition}\n Powered By OligoTech`)
+        emojis =  ['📚','📕','📗','📙','💡','📝'];
+      e = emojis[Math.floor(Math.random()*emojis.length)]
+       bot.sendMessage(chatId, `${e} .${def.definition}\n Powered By OligoTech`)
       })
   })
 })
