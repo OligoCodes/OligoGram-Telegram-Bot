@@ -243,17 +243,13 @@ bot.on('message', async (msg) => {
     try{
       const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       allDefs = [];
-      data.forEach( datum => {
       emojis =  ['📚','📕','📗','📙','💡','📝'];
-      e = emojis[Math.floor(Math.random()*emojis.length)
-/*  console.log(datum.meanings)*/
-  
-      datum.meanings.forEach(dam => {
-   /* console.log(dam.partOfSpeech)
-   /* console.log(dam.definitions)*/
-    
-      dam.definitions.forEach(def => {
-         allDefs.push(`${e}-●-${def.definition}`)
+      e = emojis[Math.floor(Math.random()*emojis.length)];
+      
+      data.forEach( datum => {
+        datum.meanings.forEach(dam => {
+           dam.definitions.forEach(def => {
+           allDefs.push(`${e}-●-${def.definition}`)
       })
   })
 })
