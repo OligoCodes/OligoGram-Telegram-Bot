@@ -43,7 +43,7 @@ bot.on('message', (msg) => {
   }else if(userMsg === "/botOwnerInfo" || userMsg === "/botOwnerInfo@oligogram_bot"){
     buttons = {
       reply_markup: {
-        inline_keyboard: ,[
+        inline_keyboard: [
           [
             {text: '🌐 𝗩𝗜𝗦𝗜𝗧 𝗠𝗬 𝗚𝗜𝗧𝗛𝗨𝗕', url: 'https://github.com/OligoCodes'},  {text: '💬 𝗝𝗢𝗜𝗡 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣', url: 'https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W'}
           ]
