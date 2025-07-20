@@ -241,11 +241,11 @@ bot.on('message', async (msg) => {
     }
     
     try{
-      const res = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-      const data = res.data;
-      
-      define = forEach( datum => {
-  
+      const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      allDefs = [];
+      data.forEach( datum => {
+      emojis =  ['📚','📕','📗','📙','💡','📝'];
+      e = emojis[Math.floor(Math.random()*emojis.length)
 /*  console.log(datum.meanings)*/
   
       datum.meanings.forEach(dam => {
@@ -253,13 +253,18 @@ bot.on('message', async (msg) => {
    /* console.log(dam.definitions)*/
     
       dam.definitions.forEach(def => {
-         def.definition;
+         allDefs.push(`${e}-●-${def.definition}`)
       })
   })
 })
-      emojis =  ['📚','📕','📗','📙','💡','📝'];
-      e = emojis[Math.floor(Math.random()*emojis.length)]
-       bot.sendMessage(chatId, `${e} .${define}\n Powered By OligoTech`)
+
+      if(allDefs.length === 0){
+        return bot.sendMessage(chatId,  `Sorry 😔, no definitions found 🗒`)
+      }
+
+      const finalMessage = `📖 *Definition of "${word}*"\n\n` + allDefs.join('\n\n') + `\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`; 
+      bot.sendMessage(chatId,  finalMessage,  {parse_mode: 'Markdown'})
+
     }catch(err){
       console.log('Error: ', err);
       bot.sendMessage(chatId,  `❌️ Word not found , Please try another word`)
