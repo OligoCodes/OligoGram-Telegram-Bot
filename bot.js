@@ -241,7 +241,9 @@ bot.on('message', async (msg) => {
     }
     
     try{
-      const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      const res = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      const data = res.data;
+      
       allDefs = [];
       emojis =  ['📚','📕','📗','📙','💡','📝'];
       e = emojis[Math.floor(Math.random()*emojis.length)];
