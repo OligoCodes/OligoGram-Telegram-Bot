@@ -346,6 +346,7 @@ bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
+  const msgId = msg.message_id;
 
   if (!userMsg || (chatType === 'channel')) return; 
   if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
@@ -363,12 +364,12 @@ bot.on('message', async (msg) => {
       const stickerId = stickers[randome]
 
       bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
-      bot.sendMessage(chatId, `        🤡 𝗝𝗢𝗞𝗘 𝗣𝗨𝗟𝗦𝗘\n\n_*${setup}*_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ` , {parse_mode: 'Markdown'});
+      bot.sendMessage(chatId, `        🤡 𝗝𝗢𝗞𝗘 𝗣𝗨𝗟𝗦𝗘\n\n_*${setup}*_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ` , {parse_mode: 'Markdown' , reply_to_message_id : msgId});
       bot.sendSticker(chatId, `${stickerId}`);
         
       }catch(e){
          console.error("Error ", e)
-         bot.sendMessage(chatId, "🥶 Joke not found")
+         bot.sendMessage(chatId, "🥶 Joke not found",  {reply_to_message_id: msgId})
        }
       }
 });
