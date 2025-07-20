@@ -244,7 +244,7 @@ bot.on('message', async (msg) => {
       const res = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       const data = res.data;
       
-      data.forEach( datum => {
+      define = forEach( datum => {
   
 /*  console.log(datum.meanings)*/
   
@@ -253,12 +253,13 @@ bot.on('message', async (msg) => {
    /* console.log(dam.definitions)*/
     
       dam.definitions.forEach(def => {
-        emojis =  ['📚','📕','📗','📙','💡','📝'];
-      e = emojis[Math.floor(Math.random()*emojis.length)]
-       bot.sendMessage(chatId, `${e} .${def.definition}\n Powered By OligoTech`)
+         def.definition;
       })
   })
 })
+      emojis =  ['📚','📕','📗','📙','💡','📝'];
+      e = emojis[Math.floor(Math.random()*emojis.length)]
+       bot.sendMessage(chatId, `${e} .${define}\n Powered By OligoTech`)
     }catch(err){
       console.log('Error: ', err);
       bot.sendMessage(chatId,  `❌️ Word not found , Please try another word`)
