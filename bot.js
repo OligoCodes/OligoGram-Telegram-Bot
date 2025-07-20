@@ -32,7 +32,7 @@ bot.on('message', (msg) => {
   }else if(userMsg === "/help" || userMsg === "/help@oligogram_bot" ){
     bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /whaspy ⇒ Get WhatsApp DP by number♻️\n◈/img - Displays a random image 🖼\n◈ /convert ⇒ Convert currencies fast💱\n◈ /crypto - Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /qualc ⇒ Clean & simple math tool🔣\n◈ /math ⇒ Basic math calculations 🔢\n◈ /bot ⇒ Smart AI chat assistant🤖\n◈ /pgen ⇒ Generate strong passwords🔒\n\n⧈⧈⧈⧈⧈⧈⧈⧈ FUN ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /randomoji ⇒ Generate random emojis\n◈ /joke ⇒ Random Jokes 😃\n◈ /tokfetch ⇒ Download TikTok vids/audios📲\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `);
   }else if(userMsg === "/info"){
-    bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n\n  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭⊢❂`);
+    bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n\n  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
   }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
     bot.sendMessage(chatId, `⏳️ Calculating ....`).then(() =>{
      const end = Date.now();
@@ -45,12 +45,12 @@ bot.on('message', (msg) => {
       reply_markup: {
         inline_keyboard: [
           [
-            {text: '🌐 𝗩𝗜𝗦𝗜𝗧 𝗠𝗬 𝗚𝗜𝗧𝗛𝗨𝗕', url: 'https://github.com/OligoCodes'},  {text: '💬 𝗝𝗢𝗜𝗡 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣', url: 'https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W'}
+            {text: '🐱 𝗠𝗬 𝗚𝗜𝗧𝗛𝗨𝗕', url: 'https://github.com/OligoCodes'},  {text: '💬 𝗝𝗢𝗜𝗡 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣', url: 'https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W'}
           ]
         ]
       }
     }
-    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸◆\n║\n ◈ Owner: 𝗝𝗼𝘀𝗲𝗽𝗵 𝗞𝘄𝗮𝗯𝗲𝗻𝗮 𝗢𝘀𝗲𝗶 𝗕𝗼𝗻𝘀𝘂(OligoCodes)\n ◈ Role: Developer & Architect 🤖\n ◈ Location: Kasoa, Ghana 🇬🇭\n ◈ Contact: https://t.me/OligoCodes\n\n❂⊣꧁ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ꧂ ⊢❂`, buttons);
+    bot.sendMessage(chatId, `⫸⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸⫷\n║\n ◈ Owner: 𝗝𝗼𝘀𝗲𝗽𝗵 𝗞𝘄𝗮𝗯𝗲𝗻𝗮 𝗢𝘀𝗲𝗶 𝗕𝗼𝗻𝘀𝘂(OligoCodes)\n ◈ Role: Developer & Architect 🤖\n ◈ Location: Kasoa, Ghana 🇬🇭\n ◈ Contact: https://t.me/OligoCodes\n\n.  📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `, buttons);
   }else if(userMsg === "/photo" || userMsg === "/photo@oligogram_bot"){
       const photoUrl = `https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=300`;
       const caption = {caption : `👾 Here is a photo 📸`};
@@ -294,7 +294,7 @@ bot.on('message', async (msg) => {
       const stickerId = stickers[randome]
 
       bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
-      bot.sendMessage(chatId, `◈◈◈◈◈◈[🤡 \`JOKE\`]◈◈◈◈◈\n\n$_${setup}_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {parse_mode: 'Markdown'});
+      bot.sendMessage(chatId, `        🤡 𝗝𝗢𝗞𝗘 𝗣𝗨𝗟𝗦𝗘\n\n_*${setup}*_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ` , {parse_mode: 'Markdown'});
       bot.sendSticker(chatId, `${stickerId}`);
         
       }catch(e){
