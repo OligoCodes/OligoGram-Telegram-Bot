@@ -64,7 +64,7 @@ bot.on('message', (msg) => {
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
-     const randomUrls = ['','','',''];
+     const randomUrls = ['./Alive.mp3','./Donzzy.mp3','./KSI.mp3','./Matushka.mp3','./Bailão.mp3'];
      const aliveUrl = Math.floor(Math.random()*randomUrls.length);
      const randoMusic = randomUrls[aliveUrl]
      const musicUrl = `${randoMusic}`;
