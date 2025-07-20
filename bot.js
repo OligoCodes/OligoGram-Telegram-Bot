@@ -31,7 +31,7 @@ bot.on('message', (msg) => {
     };
     bot.sendMessage(chatId, `🖐 Welcome ${userName} to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭\n\n Please click the button below 👇 to follow my community 🤗`, opts);
   }else if(userMsg === "/help" || userMsg === "/help@oligogram_bot" ){
-    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /whaspy ⇒ Get WhatsApp DP by number♻️\n◈ /img ⇒ Displays a random image 🖼\n◈ /convert ⇒ Convert currencies fast💱\n◈ /crypto ⇒ Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /define ⇒ Define any word📚\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /qualc ⇒ Clean & simple math tool🔣\n◈ /math ⇒ Basic math calculations 🔢\n◈ /bot ⇒ Smart AI chat assistant🤖\n◈ /pgen ⇒ Generate strong passwords🔒\n\n⧈⧈⧈⧈⧈⧈⧈⧈ FUN ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /randomoji ⇒ Generate random emojis\n◈ /joke ⇒ Random Jokes 😃\n◈ /tokfetch ⇒ Download TikTok vids/audios📲\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `);
+    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /Bible ⇒ Read the word 📖\n◈ /whaspy ⇒ Get WhatsApp DP by number♻️\n◈ /img ⇒ Displays a random image 🖼\n◈ /convert ⇒ Convert currencies fast 💱\n◈ /crypto ⇒ Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /define ⇒ Define any word 📚\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /qualc ⇒ Clean & simple math tool🔣\n◈ /math ⇒ Basic math calculations 🔢\n◈ /bot ⇒ Smart AI chat assistant🤖\n◈ /pgen ⇒ Generate strong passwords🔒\n\n⧈⧈⧈⧈⧈⧈⧈⧈ FUN ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /randomoji ⇒ Generate random emojis\n◈ /joke ⇒ Random Jokes 😃\n◈ /tokfetch ⇒ Download TikTok vids/audios📲\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n\n  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
   }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
@@ -64,7 +64,10 @@ bot.on('message', (msg) => {
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
-     const musicUrl = `https://audio.jukehost.co.uk/v9WTpehCB4JVTY5i1DYLLUSOvavZMOmy.mp3`;
+     const randomUrls = ['','','',''];
+     const aliveUrl = Math.floor(Math.random()*randomUrls.length);
+     const randoMusic = randomUrls[aliveUrl]
+     const musicUrl = `${randoMusic}`;
      const details = {caption : `I'm always alive ${username} 👻👻👻\n\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`, title: `Alive 👽` ,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
   }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
@@ -207,7 +210,7 @@ bot.on('message' , (msg) => {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '💱 𝗖𝗼𝗻𝘃𝗲𝗿𝘁 𝘄𝗶𝘁𝗵 𝗠𝗼𝗻𝗲𝘅𝗶𝗮', url: 'https://monexia.vercel.app/'}
+            {text: '💲♻️ 𝗖𝗼𝗻𝘃𝗲𝗿𝘁 𝘄𝗶𝘁𝗵 𝗠𝗼𝗻𝗲𝘅𝗶𝗮', url: 'https://monexia.vercel.app/'}
           ]
         ]
       }
@@ -235,7 +238,9 @@ bot.on('message', async (msg) => {
   const chatType = msg.chat.type;
   
   if(!userMsg || chatType === 'channel') return;
-  if (userMsg.startsWith('/define ')){
+  if(userMsg === '/define' || userMsg === '/define@oligogram_bot'){
+  bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n /define <word> e.g Oligo\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
+  }else if(userMsg.startsWith('/define ')){
     const word = userMsg.slice(8).trim();
     if(!word){
       return bot.sendMessage(chatId,  `Word not found 🚫`)
@@ -279,7 +284,7 @@ bot.on('message', async (msg) => {
   const userMsg = msg.text;
 
 
-if(userMsg === '/define' || userMsg === '/define@oligogram_bot'){
+if(userMsg === '/Bible' || userMsg === '/Bible@oligogram_bot'){
   bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║ /bible Book Chapter:Verse e.g John 3:16\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
  }else if (userMsg.startsWith('/Bible ')) {
     const verse = userMsg.slice(7).trim(); // e.g., 'john 3:16'
@@ -287,7 +292,7 @@ if(userMsg === '/define' || userMsg === '/define@oligogram_bot'){
     const response = await axios.get(`https://bible-api.com/${encodeURIComponent(verse)}?translation=kjv`);
     const data = response.data;
     if(data || data.verses){
-       const verseText = `📖 ${data.text}  ~ *${data.reference}*\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`
+       const verseText = `📖 *${data.reference}*\n\n_${data.text}_\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`
        bot.sendMessage(chatId, verseText, {parse_mode: 'Markdown'});
      } else {
        bot.sendMessage(chatId, "Sorry, I couldn't find that verse.");
@@ -368,7 +373,7 @@ bot.on('message', async (msg) => {
       const stickerId = stickers[randome]
 
       bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
-      bot.sendMessage(chatId, `        🤡 𝗝𝗢𝗞𝗘 𝗣𝗨𝗟𝗦𝗘\n\n_*${setup}*_...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ` , {parse_mode: 'Markdown' , reply_to_message_id : msgId});
+      bot.sendMessage(chatId, `        🤡 𝗝𝗢𝗞𝗘 𝗣𝗨𝗟𝗦𝗘\n\n*${setup}*...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ` , {parse_mode: 'Markdown' , reply_to_message_id : msgId});
       bot.sendSticker(chatId, `${stickerId}`);
         
       }catch(e){
