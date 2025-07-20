@@ -30,7 +30,7 @@ bot.on('message', (msg) => {
     };
     bot.sendMessage(chatId, `🖐 Welcome ${userName} to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭\n\n Please click the button below 👇 to follow my community 🤗`, opts);
   }else if(userMsg === "/help" || userMsg === "/help@oligogram_bot" ){
-    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /whaspy ⇒ Get WhatsApp DP by number♻️\n◈/img - Displays a random image 🖼\n◈ /convert ⇒ Convert currencies fast💱\n◈ /crypto - Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /qualc ⇒ Clean & simple math tool🔣\n◈ /math ⇒ Basic math calculations 🔢\n◈ /bot ⇒ Smart AI chat assistant🤖\n◈ /pgen ⇒ Generate strong passwords🔒\n\n⧈⧈⧈⧈⧈⧈⧈⧈ FUN ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /randomoji ⇒ Generate random emojis\n◈ /joke ⇒ Random Jokes 😃\n◈ /tokfetch ⇒ Download TikTok vids/audios📲\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `);
+    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /whaspy ⇒ Get WhatsApp DP by number♻️\n◈ /img ⇒ Displays a random image 🖼\n◈ /convert ⇒ Convert currencies fast💱\n◈ /crypto ⇒ Decent list of crypto prices 💰\n◈ /weather ⇒ Weather in your city ☁️\n◈ /define ⇒ Define any word📚\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /qualc ⇒ Clean & simple math tool🔣\n◈ /math ⇒ Basic math calculations 🔢\n◈ /bot ⇒ Smart AI chat assistant🤖\n◈ /pgen ⇒ Generate strong passwords🔒\n\n⧈⧈⧈⧈⧈⧈⧈⧈ FUN ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /randomoji ⇒ Generate random emojis\n◈ /joke ⇒ Random Jokes 😃\n◈ /tokfetch ⇒ Download TikTok vids/audios📲\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n\n  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
   }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
@@ -226,6 +226,45 @@ bot.on('message' , (msg) => {
     bot.sendMessage(chatId, message, button);
   }
 });
+
+//dictionary
+bot.on('message', (msg) => {
+  const chatId = msg.chat.id;
+  const userMsg = msg.text;
+  const chatType = msg.chat.type;
+  
+  if(!userMsg || chatType === 'channel') return;
+  if (userMsg.startsWith('/define ')){
+    const word = userMsg.slice(8);
+    if(!word){
+      return bot.sendMessage(chatId,  `Word not found 🚫`)
+    }
+    
+    try{
+      const data = axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      
+      data.forEach( datum => {
+  
+/*  console.log(datum.meanings)*/
+  
+      datum.meanings.forEach(dam => {
+   /* console.log(dam.partOfSpeech)
+   /* console.log(dam.definitions)*/
+    
+      dam.definitions.forEach(def => {
+      e = ['📚','📕','📗','📙','💡','📝'][Math.floor(Math.random()*['📚','📕','📗','📙','💡','�'].length)]
+       bot.sendMessageg(chatId, `${e} .${def.definition}\n Powered By OligoTech`)
+      })
+  })
+})
+    }catch(err){
+      console.log('Error: ', err);
+      bot.sendMessage(chatId,  `❌️ Word not found , Please try another word`)
+    }
+  }
+  
+});
+
 
 //image generation
 bot.on('message', async (msg) => {
