@@ -41,7 +41,16 @@ bot.on('message', (msg) => {
 })}else if(userMsg === "/myInfo" || userMsg === "/myInfo@oligogram_bot"){
     bot.sendMessage(chatId, `╔⫷⫷⫷[👤 USER PROFILE ]⫸⫸⫸◆\n║\n║  ◈ First Name: ${userFirstName}\n║  ◈ Last Name: ${userLastName}\n║  ◈ Username: @${userName}\n║  ◈ User ID: ${userId}\n║\n╠════📎YOU LOOK AWESOME═══⧈\n║\n║ Hope you’re enjoying the bot! 😎\n║\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`);
   }else if(userMsg === "/botOwnerInfo" || userMsg === "/botOwnerInfo@oligogram_bot"){
-    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸◆\n║\n ◈ Owner: 𝗝𝗼𝘀𝗲𝗽𝗵 𝗞𝘄𝗮𝗯𝗲𝗻𝗮 𝗢𝘀𝗲𝗶 𝗕𝗼𝗻𝘀𝘂(OligoCodes)\n ◈ Role: Developer & Architect 🤖\n ◈ Location: Kasoa, Ghana 🇬🇭\n ◈ Contact: https://t.me/OligoCodes\n\n╠═════🌐 VISIT MY GITHUB═════⧈\n\n GitHub: github.com/OligoCodes/\n\n╠[💬 Follow My WhatsApp Channel]═⧈\n   WhatsApp: [https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W]\n\n❂⊣꧁ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ꧂ ⊢❂`);
+    buttons = {
+      reply_markup: {
+        inline_keyboard: ,[
+          [
+            {text: '🌐 𝗩𝗜𝗦𝗜𝗧 𝗠𝗬 𝗚𝗜𝗧𝗛𝗨𝗕', url: 'https://github.com/OligoCodes'},  {text: '💬 𝗝𝗢𝗜𝗡 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣', url: 'https://whatsapp.com/channel/0029VbB6vUk1NCrRjbDzKZ3W'}
+          ]
+        ]
+      }
+    }
+    bot.sendMessage(chatId, `╔⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸◆\n║\n ◈ Owner: 𝗝𝗼𝘀𝗲𝗽𝗵 𝗞𝘄𝗮𝗯𝗲𝗻𝗮 𝗢𝘀𝗲𝗶 𝗕𝗼𝗻𝘀𝘂(OligoCodes)\n ◈ Role: Developer & Architect 🤖\n ◈ Location: Kasoa, Ghana 🇬🇭\n ◈ Contact: https://t.me/OligoCodes\n\n❂⊣꧁ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ꧂ ⊢❂`, buttons);
   }else if(userMsg === "/photo" || userMsg === "/photo@oligogram_bot"){
       const photoUrl = `https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=300`;
       const caption = {caption : `👾 Here is a photo 📸`};
