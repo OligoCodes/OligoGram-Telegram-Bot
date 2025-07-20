@@ -13,6 +13,7 @@ bot.on('message', (msg) => {
   const userMsg = msg.text;
   const userId = msg.from.id;
   const chatType = msg.chat.type;
+  const msgId = msg.message_id;
   const userFirstName = msg.from.first_name || "Unknown";
   const userLastName = msg.from.last_name || "Unknown";
   const userName = msg.from.username || "Unknown";
@@ -83,7 +84,7 @@ bot.on('message', (msg) => {
      }
      bot.sendMessage(chatId, `📊 Welcome ${userName} to the OligoTech Crypto Dashboard\n\nTrack real-time prices for the top cryptocurrencies, including Bitcoin, Ethereum, Solana, and more.\n\nTap any coin below to view its current market value.\n\n🔄 Data updates automatically | 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `, croyce, {parse_mode: 'Markdown'});
   }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
-      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {reply_to_message_id: msgId})
   }else if(userMsg.startsWith('/add ')){
       const addition = userMsg.slice(5).trim();
       const add = eval(addition);
@@ -152,13 +153,13 @@ bot.on('message' , (msg) => {
       }
     };
     bot.sendMessage(chatId, message, button);
-  }else if(userMsg === '/qualc' || userMsg === '/qualc@oligogram_bot'){
-    const message = '🔹 QUALCULATOR\n\n🧮 Minimal, fast math calculator — no distractions.\n\n🔧 Developed by 𝗝𝗼𝘀𝗲𝗽𝗵 𝗕𝗼𝗻𝘀𝘂 🇬🇭';
+  }else if(userMsg === '/qalc' || userMsg === '/qalc@oligogram_bot'){
+    const message = '🔹 QALCULATOR\n\n🧮 Minimal, fast math calculator — no distractions.\n\n🔧 Developed by 𝗝𝗼𝘀𝗲𝗽𝗵 𝗕𝗼𝗻𝘀𝘂 🇬🇭';
     const button = {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '🧮 𝗧𝗿𝘆 𝗤𝗨𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗢𝗥', url: 'https://qualculator.vercel.app/'}
+            {text: '🧮 𝗧𝗿𝘆 𝗤𝗔𝗟𝗖𝗨𝗟𝗔𝗧𝗢𝗥', url: 'https://qalculator.vercel.app/'}
           ]
         ]
       }
@@ -277,11 +278,14 @@ bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
 
-  if (userMsg.startsWith('/Bible ')) {
+
+if(userMsg === '/define' || userMsg === '/define@oligogram_bot'){
+  bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║ /bible Book Chapter:Verse e.g John 3:16\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
+ }else if (userMsg.startsWith('/Bible ')) {
     const verse = userMsg.slice(7).trim(); // e.g., 'john 3:16'
     try{
     const response = await axios.get(`https://bible-api.com/${encodeURIComponent(verse)}?translation=kjv`);
-    const data = res.data;
+    const data = response.data;
     if (data && data.verses) {
           const verseText = data.verses.map(v => `${v.text.trim()} - ${v.reference}`).join('\n');
           bot.sendMessage(chatId, verseText);
