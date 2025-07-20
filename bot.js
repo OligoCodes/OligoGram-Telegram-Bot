@@ -228,7 +228,7 @@ bot.on('message' , (msg) => {
 });
 
 //dictionary
-bot.on('message', (msg) => {
+bot.on('message', async(msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
@@ -241,7 +241,7 @@ bot.on('message', (msg) => {
     }
     
     try{
-      const data = axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       
       data.forEach( datum => {
   
