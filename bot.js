@@ -291,9 +291,8 @@ bot.on('message', async (msg) => {
     }catch(e){
         bot.sendMessage(chatId, "⚠️ An error occurred while fetching the scripture");
         console.error("Error ", e);
-      });
-       }
-  }
+    };
+    }
 });
 
 
