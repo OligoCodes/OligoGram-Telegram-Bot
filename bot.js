@@ -68,7 +68,7 @@ bot.on('message', (msg) => {
      const aliveUrl = Math.floor(Math.random()*randomUrls.length);
      const randoMusic = randomUrls[aliveUrl]
      const musicUrl = `${randoMusic}`;
-     const details = {caption : `I'm always alive ${username} 👻👻👻\n\n❂⊣ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 ⊢❂`, title: `Alive 👽` ,performer: `OligoCodes 💠`, thumb : `./oligo.jpg`};
+     const details = { caption : `I'm always alive ${username} 👻👻👻\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` ,title: `𝗔𝗹𝗶𝘃𝗲 👽` ,performer: `OligoCodes 💠`, thumb : `./OligoGram_bot.jpg`};
      bot.sendAudio(chatId, musicUrl, details);
   }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
      const croyce = {
