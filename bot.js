@@ -286,11 +286,11 @@ if(userMsg === '/define' || userMsg === '/define@oligogram_bot'){
     try{
     const response = await axios.get(`https://bible-api.com/${encodeURIComponent(verse)}?translation=kjv`);
     const data = response.data;
-    if (data && data.verses) {
-          const verseText = data.verses.map(v => `${v.text.trim()} - ${v.reference}`).join('\n');
-          bot.sendMessage(chatId, verseText);
-        } else {
-          bot.sendMessage(chatId, "Sorry, I couldn't find that verse.");
+    if(data || data.verses)
+       const verseText = `📖 ${data.text}  ~ *${data.reference}*\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`
+       bot.sendMessage(chatId, verseText, {parse_mode: 'Markdown'});
+     } else {
+       bot.sendMessage(chatId, "Sorry, I couldn't find that verse.");
     }
     }catch(e){
         bot.sendMessage(chatId, "⚠️ An error occurred while fetching the scripture");
