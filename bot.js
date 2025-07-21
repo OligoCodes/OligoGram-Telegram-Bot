@@ -184,7 +184,7 @@ bot.on('message' , (msg) => {
       reply_markup: {
         inline_keyboard:[
           [
-            {text: '🔍 𝗩𝗶𝗲𝘄 𝗪𝗵𝗮𝘀𝗽𝘆', url: 'https://pgen-one.vercel.app/'}
+            {text: '🔐 𝗧𝗿𝘆 𝗣𝗚𝗲𝗻', url: 'https://pgen-one.vercel.app/'}
           ]
         ]
       }
@@ -346,6 +346,21 @@ bot.on('callback_query' , (query) => {
   if(data === "ok" || data === "ok@oligogram_bot"){
     bot.deleteMessage(chatId, msgId);
   }
+})
+
+//qr codes
+bot.on('message' , (msg) => {
+  const chatId = msg.chat.id;
+  const userMsg = msg.text;
+  const chatType = msg.chat.type;
+  const msgId = msg.message_id;
+
+  if (!userMsg || (chatType === 'channel')) return; 
+  if(userMsg === '/qr' || userMsg === "/qr@oligogram_bot"){
+    bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n  👨‍💻 Type /qr <anytext>\n   (eg. /qr OligoCodes)\n\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+  }else if(userMsg.startsWith('/qr ')){
+    const text = 
+ 
 })
 
 
