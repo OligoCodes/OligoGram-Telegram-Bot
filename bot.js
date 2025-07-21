@@ -282,8 +282,9 @@ bot.on('message', async (msg) => {
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-
-
+  const chatType = msg.chat.type;
+  
+if(!userMsg || chatType === 'channel') return;
 if(userMsg === '/Bible' || userMsg === '/Bible@oligogram_bot'){
   bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║ /bible Book Chapter:Verse e.g John 3:16\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
  }else if (userMsg.startsWith('/Bible ')) {
