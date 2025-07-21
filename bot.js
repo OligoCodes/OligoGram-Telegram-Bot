@@ -66,7 +66,7 @@ bot.on('message', (msg) => {
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
      const musicUrl = './Alive.mp3';
-     const details = { caption : `I'm always alive ${username} 👻👻👻\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` ,title: `𝗔𝗹𝗶𝘃𝗲 👽` ,performer: `OligoCodes 💠`, thumb : `./OligoGram_bot.jpg`};
+     const details = { caption : `I'm always alive ${username} 👻👻👻\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` ,title: `𝗔𝗹𝗶𝘃𝗲 👽` ,performer: 'OligoGram 💠', thumb : fs.createReadStream('./OligoGram_bot.jpg)'};
      bot.sendAudio(chatId, musicUrl, details);
   }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
      const croyce = {
