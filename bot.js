@@ -361,7 +361,10 @@ bot.on('message' , async(msg) => {
   }else if(userMsg.startsWith('/qr ')){
     const text = userMsg.slice(4);
     try{
-      const response = await axios.get('https://api.qrserver.com/v1/create-qr-code/?data=HelloOligo&size=200x200')
+      const response = await axios.get(`https://api.qrserver.com/v1/create-qr-code/?data=${text}&size=300x300`);
+      const url = response.url;
+
+      bot.
     }catch(e){
       
     }
