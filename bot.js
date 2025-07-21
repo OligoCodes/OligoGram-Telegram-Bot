@@ -369,6 +369,7 @@ bot.on('message' , async(msg) => {
       console.error('Error ', e);
       bot.sendMessage(chatId,  `🚫 Could not generate QR Code.`)
     }
+  }
 });
 
 
