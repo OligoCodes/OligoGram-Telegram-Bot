@@ -65,9 +65,9 @@ bot.on('message', (msg) => {
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
-     const musicUrl = './Alive.mp3';
-     const details = { caption : `I'm always alive ${username} 👻👻👻\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` ,title: `𝗔𝗹𝗶𝘃𝗲 👽` ,performer: 'OligoGram 💠', thumb : fs.createReadStream('./OligoGram_bot.jpg')};
-     bot.sendAudio(chatId, musicUrl, details);
+     const musicUrl = 'https://github.com/OligoCodes/OligoGram-Telegram-Bot/Alive.mp3';
+     const details = { caption : `I'm always alive ${username} 👻👻👻\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` ,title: `𝗔𝗹𝗶𝘃𝗲 👽` ,performer: 'OligoGram 💠', thumb : fs.createReadStream('https://github.com/OligoCodes/OligoGram-Telegram-Bot/OligoGram_bot.jpg')};
+     bot.sendAudio(chatId, fs.createReadStream(musicUrl), details);
   }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
      const croyce = {
        reply_markup: {
