@@ -518,6 +518,27 @@ bot.on('callback_query', async (query) => {
   }
 });
 
+//autoReact
+
+bot.on('message' , (msg) => {
+  const chatId = msg.chat.id;
+  const msgId = msg.message_id;
+
+  try{
+    const 
+  }catch(err){
+    console.error("Error ", err)
+    bot.sendMessage(chatId,  'Message')
+  }
+  
+  
+
+
+
+
+  
+})
+
 //incoming members 
 bot.on('new_chat_members', (msg) => {
   const chatId = msg.chat.id;
