@@ -520,24 +520,22 @@ bot.on('callback_query', async (query) => {
 
 //autoReact
 
-bot.on('message' , (msg) => {
+bot.on('message' , async(msg) => {
   const chatId = msg.chat.id;
   const msgId = msg.message_id;
 
   try{
-    const 
+    const response = await axios.get(`https://api.telegram.org/bot${token}/setMessageReaction` , {
+      chat_id: chatId,
+      message_id: msgId,
+      reaction: [{type: 'emoji' , emoji: '👑'}]
+    });  
+    
+    console.log(reaction.data)
   }catch(err){
-    console.error("Error ", err)
-    bot.sendMessage(chatId,  'Message')
-  }
-  
-  
-
-
-
-
-  
-})
+    console.error('Failed to react ', err.message, err.response?.data)
+  }  
+});
 
 //incoming members 
 bot.on('new_chat_members', (msg) => {
