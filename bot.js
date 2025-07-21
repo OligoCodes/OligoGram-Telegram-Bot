@@ -360,7 +360,7 @@ bot.on('message' , (msg) => {
     bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n  👨‍💻 Type /qr <anytext>\n   (eg. /qr OligoCodes)\n\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else if(userMsg.startsWith('/qr ')){
     const text = userMsg.slice(4);
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(text)}&size=300x300`)
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(text)}&size=300x300`;
       
     bot.sendPhoto(chatId, qrUrl, {caption: `🔳 Your QR code is ready\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, reply_to_message_id: msgId}).catch(error => {
       console.error('Error ', error.message);
