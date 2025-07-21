@@ -349,7 +349,7 @@ bot.on('callback_query' , (query) => {
 })
 
 //qr codes
-bot.on('message' , async(msg) => {
+bot.on('message' , (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
@@ -360,15 +360,12 @@ bot.on('message' , async(msg) => {
     bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n  👨‍💻 Type /qr <anytext>\n   (eg. /qr OligoCodes)\n\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else if(userMsg.startsWith('/qr ')){
     const text = userMsg.slice(4);
-    try{
-      const response = await axios.get(`https://api.qrserver.com/v1/create-qr-code/?data=${text}&size=300x300`);
-      const qrUrl = response.url;
-
-      bot.sendPhoto(chatId, qrUrl, {caption: `📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, reply_to_message_id: msgId})
-    }catch(e){
-      console.error('Error ', e);
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(text)}&size=300x300`)
+      
+    bot.sendPhoto(chatId, qrUrl, {caption: `🔳 Your QR code is ready\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, reply_to_message_id: msgId}).catch(error => {
+      console.error('Error ', error.message);
       bot.sendMessage(chatId,  `🚫 Could not generate QR Code.`)
-    }
+    })
   }
 });
 
