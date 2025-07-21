@@ -362,14 +362,14 @@ bot.on('message' , async(msg) => {
     const text = userMsg.slice(4);
     try{
       const response = await axios.get(`https://api.qrserver.com/v1/create-qr-code/?data=${text}&size=300x300`);
-      const url = response.url;
+      const qrUrl = response.url;
 
-      bot.
+      bot.sendPhoto(chatId, qrUrl, {caption: `📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, reply_to_message_id: msgId})
     }catch(e){
-      
+      console.error('Error ', e);
+      bot.sendMessage(chatId,  `🚫 Could not generate QR Code.`)
     }
- 
-})
+});
 
 
 //jokes
