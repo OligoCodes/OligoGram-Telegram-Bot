@@ -65,7 +65,9 @@ bot.on('message', (msg) => {
      const stickerId = `CAACAgQAAxkBAhwn6Wh3VuRB7LlzXLhKpx2Xz1SUSFcKAAIUGgACr9qAU3JPwjHUF0t6NgQ`;
      bot.sendSticker(chatId, stickerId);
   }else if(userMsg === "/alive" || userMsg === "/alive@oligogram_bot"){
-     const musicUrl = 'https://raw.githubusercontent.com/OligoCodes/OligoGram-Telegram-Bot/main/Alive.mp3';
+     const audios = ['Matushka.mp3','Alive.mp3','KSI.mp3','Bailão.mp3','Donzzy.mp3']
+     const randoMusic = audios[Math.floor(Math.random()*audios.length)]
+     const musicUrl = `https://raw.githubusercontent.com/OligoCodes/OligoGram-Telegram-Bot/main/${randoMusic}`;
      const details = { caption : `I'm always alive Seniorman 👻👻👻\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` ,title: `𝗔𝗹𝗶𝘃𝗲 👽` ,performer: 'OligoGram 💠', thumb : 'https://raw.githubusercontent.com/OligoCodes/OligoGram-Telegram-Bot/main/OligoGram_bot.jpg'};
      bot.sendAudio(chatId, musicUrl, details);
   }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
@@ -525,7 +527,7 @@ bot.on('message' , async(msg) => {
   const msgId = msg.message_id;
 
   try{
-    const response = await axios.get(`https://api.telegram.org/bot${token}/setMessageReaction` , {
+    const response = await axios.post(`https://api.telegram.org/bot${token}/setMessageReaction` , {
       chat_id: chatId,
       message_id: msgId,
       reaction: [{type: 'emoji' , emoji: '👑'}]
@@ -533,7 +535,7 @@ bot.on('message' , async(msg) => {
     
     console.log(reaction.data)
   }catch(err){
-    console.error('Failed to react ', err.message, err.response?.data)
+    console.error('Failed to react ', err.message || err.response?.data)
   }  
 });
 
