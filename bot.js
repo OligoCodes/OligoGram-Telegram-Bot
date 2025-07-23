@@ -135,6 +135,7 @@ bot.on('message', (msg) => {
   }
 });
 
+//new menu
 bot.on('message' , (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text:
@@ -142,18 +143,94 @@ bot.on('message' , (msg) => {
 
   if(!userMsg || chatType === 'channel') return;
   if (userMsg === '/help'){
-    const message = `🤖 All-in-One Bot Menu\nExplore commands by category: Basics, Fun, Tools, or Data.\n\nTap a button below to begin.\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`;
+    const message = `🤖 𝗔𝗹𝗹-𝗶𝗻-𝗢𝗻𝗲 𝗕𝗼𝘁 𝗠𝗲𝗻𝘂\n\nExplore commands by category: Basics, Fun, Tools, or Data.\n\nTap a button below to begin.\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`;
     const buttons = {
       reply_markup: {
         inline_keyboard: [
-          [{text: '',callback_data: ''},{text: '',callback_data: ''}],
-          [{text: '', callback_data: ''},{text: '', callback_data: ''}]
+          [{text: '💠 𝗕𝗔𝗦𝗜𝗖',callback_data: 'basic'},{text: '📊 𝗗𝗔𝗧𝗔',callback_data: 'data'}],
+          [{text: '🎭 𝗙𝗨𝗡', callback_data: 'fun'},{text: '🛠️ 𝗧𝗢𝗢𝗟𝗦', callback_data: 'tools'}]
         ]
       }
     }
+
+    bot.sendMessage(chatId,  message, buttons)
+  }
+  
+})
+
+//query for /help
+bot.on('callback_query', (query) => {
+  const chatId = query.message.chat.id;
+  const chatType = query.message.chat.type;
+  const msgId = query.message.message_id;
+  const data = query.data;
+  const queryId = query.id;
+
+  if(!data || chatType === 'channel') return;
+  if (data === 'basic'){
+    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    {
+      chat_id : chatId,
+      message_id: msgId,
+      reply_markup: {
+        inline_keyboard: [
+          [{text: '🔙 𝗕𝗮𝗰𝗸',callback_data: 'helpPage'}]
+        ]
+      }
+    });
+  }else if (data === 'data'){
+    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    {
+      chat_id : chatId,
+      message_id: msgId,
+      reply_markup: {
+        inline_keyboard: [
+          [{text: '🔙 𝗕𝗮𝗰𝗸',callback_data: 'helpPage'}]
+        ]
+      }
+    });
+  }else if (data === 'tools'){
+    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    {
+      chat_id : chatId,
+      message_id: msgId,
+      reply_markup: {
+        inline_keyboard: [
+          [{text: '🔙 𝗕𝗮𝗰𝗸',callback_data: 'helpPage'}]
+        ]
+      }
+    });
+  }else if (data === 'fun'){
+    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    {
+      chat_id : chatId,
+      message_id: msgId,
+      reply_markup: {
+        inline_keyboard: [
+          [{text: '🔙 𝗕𝗮𝗰𝗸',callback_data: 'helpPage'}]
+        ]
+      }
+    });
   }
 
-  
+
+
+  if(data === 'helpPage'){
+    bot.editMessageText(`🤖 𝗔𝗹𝗹-𝗶𝗻-𝗢𝗻𝗲 𝗕𝗼𝘁 𝗠𝗲𝗻𝘂\nExplore commands by category: Basics, Fun, Tools, or Data.\n\nTap a button below to begin.\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    {
+      chat_id: chatId,
+      message_id: msgId,
+      reply_markup: {
+        inline_keyboard: [
+          [{text: '💠 𝗕𝗔𝗦𝗜𝗖',callback_data: 'basic'},{text: '📊 𝗗𝗔𝗧𝗔',callback_data: 'data'}] ,
+          [{text: '🎭 𝗙𝗨𝗡', callback_data: 'fun'},{text: '🛠️ 𝗧𝗢𝗢𝗟𝗦', callback_data: 'tools'}]
+        ]
+      }
+    });
+  }
+
+
+  bot.answerCallbackQuery(queryId);
 })
 
 
