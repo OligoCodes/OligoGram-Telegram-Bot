@@ -31,8 +31,6 @@ bot.on('message', (msg) => {
       }
     };
     bot.sendMessage(chatId, `🖐 Welcome ${userName} to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭\n\n Please click the button below 👇 to follow my community 🤗`, opts);
-  }else if(userMsg === "/help" || userMsg === "/help@oligogram_bot" ){
-    bot.sendMessage(chatId, `꧁ ✨ Available Commands ✨️ ꧂\n\n⧈⧈⧈⧈⧈⧈⧈⧈ BASIC ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /info ⇒ User info and botOwner info 👤 \n◈ /start ⇒ Starts the bot 🤖\n◈ /help ⇒ Shows this help message 🚸\n◈ /ping ⇒ Check bot's response time 🎯\n◈ /photo ⇒ Sends a particular photo 📸\n◈ /sticker ⇒ Sends crying sticker 🤣\n◈ /alive ⇒ Sends ping song ⏸️\n◈ /ownerPic ⇒ An iconic portrait of the bot programmer 🤯👾\n\n⧈⧈⧈⧈⧈⧈⧈⧈⧈ DATA ⧈⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /Bible ⇒ Read the word 📖\n◈ /whaspy ⇒ Get WhatsApp DP by number♻️\n◈ /img ⇒ Displays a random image 🖼\n◈ /convert ⇒ Convert currencies fast 💱\n◈ /crypto ⇒ Decent list of crypto prices 💰(not active)\n◈ /weather ⇒ Weather in your city ☁️\n◈ /define ⇒ Define any word 📚\n◈ /play ⇒ Play a song from title(not active yet)\n\n⧈⧈⧈⧈⧈⧈ FUNCTIONALS ⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /qr ⇒ Convert any link or text into QR code ✨️ \n◈ /qalc ⇒ Clean & simple math tool🔣\n◈ /math ⇒ Basic math calculations 🔢\n◈ /bot ⇒ Smart AI chat assistant🤖\n◈ /pgen ⇒ Generate strong passwords🔒\n\n⧈⧈⧈⧈⧈⧈⧈⧈ FUN ⧈⧈⧈⧈⧈⧈⧈⧈⧈\n\n◈ /randomoji ⇒ Generate random emojis\n◈ /joke ⇒ Random Jokes 😃\n◈ /tokfetch ⇒ Download TikTok vids/audios📲\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n\n  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
   }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
@@ -144,7 +142,15 @@ bot.on('message' , (msg) => {
 
   if(!userMsg || chatType === 'channel') return;
   if (userMsg === '/help'){
-    const message = ``
+    const message = `🤖 All-in-One Bot Menu\nExplore commands by category: Basics, Fun, Tools, or Data.\n\nTap a button below to begin.\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`;
+    const buttons = {
+      reply_markup: {
+        inline_keyboard: [
+          [{text: '',callback_data: ''},{text: '',callback_data: ''}],
+          [{text: '', callback_data: ''},{text: '', callback_data: ''}]
+        ]
+      }
+    }
   }
 
   
