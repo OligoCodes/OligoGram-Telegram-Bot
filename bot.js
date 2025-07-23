@@ -68,7 +68,7 @@ bot.on('message', (msg) => {
      const musicUrl = `https://raw.githubusercontent.com/OligoCodes/OligoGram-Telegram-Bot/main/${randoMusic}`;
      const details = { caption : `I'm always alive Seniorman 👻👻👻\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` ,title: `𝗔𝗹𝗶𝘃𝗲 👽` ,performer: 'OligoGram 💠', thumb : 'https://raw.githubusercontent.com/OligoCodes/OligoGram-Telegram-Bot/main/OligoGram_bot.jpg'};
      bot.sendAudio(chatId, musicUrl, details);
-  }if (userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
+  }else if(userMsg === "/crypto" || userMsg === "/crypto@oligogram_bot"){
      const croyce = {
        reply_markup: {
          inline_keyboard:[
@@ -558,61 +558,63 @@ bot.on('callback_query', async (query) => {
   const chatId = query.message.chat.id;
   const data = query.data;
 
-  try {
-    const response = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,binancecoin,cardano,ripple&vs_currencies=usd`);
-    
-    if (data === "/btc" || data === "/btc@oligogram_bot") {
-      try {
-        bot.sendMessage(chatId, `✅️ The current price of BITCOIN💰 is\n   ❂⊣ $${response.data.bitcoin.usd} ⊢❂`);
-      } catch (e) {
-        console.error("BTC error:", e);
-        bot.sendMessage(chatId, `🚫Failed to fetch crypto 💰`);
-      }
-
-    } else if (data === "/eth" || data === "/eth@oligogram_bot") {
-      try {
-        bot.sendMessage(chatId, `✅️ The current price of ETHEREUM 🧠 is\n   ❂⊣ $${response.data.ethereum.usd} ⊢❂`);
-      } catch (e) {
-        console.error("ETH error:", e);
-        bot.sendMessage(chatId, `🚫Failed to fetch crypto 🧠`);
-      }
-
-    } else if (data === "/sol" || data === "/sol@oligogram_bot") {
-      try {
-        bot.sendMessage(chatId, `✅️ The current price of SOLANA 🔮 is\n   ❂⊣ $${response.data.solana.usd} ⊢❂`);
-      } catch (e) {
-        console.error("SOL error:", e);
-        bot.sendMessage(chatId, `🚫Failed to fetch crypto 🔮`);
-      }
-
-    } else if (data === "/bnb" || data === "/bnb@oligogram_bot") {
-      try {
-        bot.sendMessage(chatId, `✅️ The current price of BINANCE COIN 🪙 is\n   ❂⊣ $${response.data.binancecoin.usd} ⊢❂`);
-      } catch (e) {
-        console.error("BNB error:", e);
-        bot.sendMessage(chatId, `🚫Failed to fetch crypto 🪙`);
-      }
-
-    } else if (data === "/ada" || data === "/ada@oligogram_bot") {
-      try {
-        bot.sendMessage(chatId, `✅️ The current price of CARDANO 💢 is\n   ❂⊣ $${response.data.cardano.usd} ⊢❂`);
-      } catch (e) {
-        console.error("ADA error:", e);
-        bot.sendMessage(chatId, `🚫Failed to fetch crypto 💢`);
-      }
-
-    } else if (data === "/xrp" || data === "/xrp@oligogram_bot") {
-      try {
-        bot.sendMessage(chatId, `✅️ The current price of RIPPLE 💠 is\n   ❂⊣ $${response.data.ripple.usd} ⊢❂`);
-      } catch (e) {
-        console.error("XRP error:", e);
-        bot.sendMessage(chatId, `🚫Failed to fetch crypto 💠`);
-      }
+  if (data === "/btc") {
+    try {
+      const res = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd`);
+      bot.sendMessage(chatId, `✅️ The current price of BITCOIN💰 is\n   ❂⊣ $${res.data.bitcoin.usd} ⊢❂`);
+    } catch (e) {
+      console.error("BTC error:", e);
+      bot.sendMessage(chatId, `🚫Failed to fetch crypto 💰`);
     }
 
-  } catch (e) {
-    console.error("General API error:", e);
-    bot.sendMessage(chatId, `🚫Couldn't connect to the price server.`);
+  } else if (data === "/eth") {
+    try {
+      const res = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`);
+      bot.sendMessage(chatId, `✅️ The current price of ETHEREUM 🧠 is\n   ❂⊣ $${res.data.ethereum.usd} ⊢❂`);
+    } catch (e) {
+      console.error("ETH error:", e);
+      bot.sendMessage(chatId, `🚫Failed to fetch crypto 🧠`);
+    }
+
+  } else if (data === "/sol") {
+    try {
+      const res = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd`);
+      bot.sendMessage(chatId, `✅️ The current price of SOLANA 🔮 is\n   ❂⊣ $${res.data.solana.usd} ⊢❂`);
+    } catch (e) {
+      console.error("SOL error:", e);
+      bot.sendMessage(chatId, `🚫Failed to fetch crypto 🔮`);
+    }
+
+  } else if (data === "/bnb") {
+    try {
+      const res = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`);
+      bot.sendMessage(chatId, `✅️ The current price of BINANCE COIN 🪙 is\n   ❂⊣ $${res.data.binancecoin.usd} ⊢❂`);
+    } catch (e) {
+      console.error("BNB error:", e);
+      bot.sendMessage(chatId, `🚫Failed to fetch crypto 🪙`);
+    }
+
+  } else if (data === "/ada") {
+    try {
+      const res = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd`);
+      bot.sendMessage(chatId, `✅️ The current price of CARDANO 💢 is\n   ❂⊣ $${res.data.cardano.usd} ⊢❂`);
+    } catch (e) {
+      console.error("ADA error:", e);
+      bot.sendMessage(chatId, `🚫Failed to fetch crypto 💢`);
+    }
+
+  } else if (data === "/xrp") {
+    try {
+      const res = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd`);
+      bot.sendMessage(chatId, `✅️ The current price of RIPPLE 💠 is\n   ❂⊣ $${res.data.ripple.usd} ⊢❂`);
+    } catch (e) {
+      console.error("XRP error:", e);
+      bot.sendMessage(chatId, `🚫Failed to fetch crypto 💠`);
+    }
+
+  } else {
+    // It's a different callback unrelated to crypto — ignore or handle it elsewhere.
+    console.log("Callback received but not a crypto command:", data);
   }
 });
 
