@@ -137,6 +137,20 @@ bot.on('message', (msg) => {
   }
 });
 
+bot.on('message' , (msg) => {
+  const chatId = msg.chat.id;
+  const userMsg = msg.text:
+  const chatType = msg.chat.type;
+
+  if(!userMsg || chatType === 'channel') return;
+  if (userMsg === '/help'){
+    const message = ``
+  }
+
+  
+})
+
+
 //projects mine
 bot.on('message' , (msg) => {
   const chatId = msg.chat.id;
