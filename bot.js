@@ -138,7 +138,7 @@ bot.on('message', (msg) => {
 //new menu
 bot.on('message' , (msg) => {
   const chatId = msg.chat.id;
-  const userMsg = msg.text:
+  const userMsg = msg.text;
   const chatType = msg.chat.type;
 
   if(!userMsg || chatType === 'channel') return;
