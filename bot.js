@@ -178,8 +178,8 @@ bot.on('callback_query', (query) => {
         ]
       }
     });
-  }else if (data === 'data'){
-    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+  }else if (data === 'tools'){
+    bot.editMessageText(`/whaspy   ⇒ Get WhatsApp profile pic 📱  \n/math  ⇒ Solve math expressions 🧠  \n/qr  ⇒ Create QR code 🔳 \n/pgen  ⇒ Generate secure passwords 🔐  \n/bots  ⇒ Access bot tools menu 🧰\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
     {
       chat_id : chatId,
       message_id: msgId,
@@ -189,9 +189,8 @@ bot.on('callback_query', (query) => {
         ]
       }
     });
-  }else if (data === 'tools'){
-    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
-    {
+  }else if (data === 'data'){
+    bot.editMessageText(`/weather  ⇒ Get weather info 🌦️  \n/crypto  ⇒ Show cryptocurrency prices 💰  \n/qalc  ⇒ Quick calculator 🧮  \n/define  ⇒ Dictionary word definitions 📚  \n/Bible  ⇒ Fetch Bible verses ✝️\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, {
       chat_id : chatId,
       message_id: msgId,
       reply_markup: {
@@ -201,7 +200,7 @@ bot.on('callback_query', (query) => {
       }
     });
   }else if (data === 'fun'){
-    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    bot.editMessageText(`/joke  ⇒ Sends a random joke 😂  \n/randomoji  ⇒ Sends a random emoji 🎲  \n/img  ⇒ Generate AI images 🖼️  \n/tokfetch  ⇒ Download TikTok video links 🎥\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
     {
       chat_id : chatId,
       message_id: msgId,
