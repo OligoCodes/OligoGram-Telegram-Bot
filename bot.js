@@ -33,7 +33,7 @@ bot.on('message', async (msg) => {
   const isMember = await checkMembership(userId);
 
   
-  if (!userMsg || (chatType === 'channel') || !isMember) return; 
+  if (!userMsg || (chatType === 'channel') return; 
   if (userMsg === "/start"){
     const opts = {
       reply_markup : {
@@ -48,7 +48,9 @@ bot.on('message', async (msg) => {
       }
     };
     bot.sendMessage(chatId, `🖐 Welcome ${userName} to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭\n\n Please click the button below 👇 to follow my community in order to get access to my features🤗`, opts);
-  }else if(userMsg === "/info"){
+  }
+  if(!isMember)return!
+  if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n║\n║  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
   }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
     bot.sendMessage(chatId, `⏳️ Calculating ....`).then(() =>{
