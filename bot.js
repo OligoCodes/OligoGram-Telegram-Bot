@@ -26,11 +26,14 @@ bot.on('message', (msg) => {
       inline_keyboard : [
         [
           { text: "𝗝𝗢𝗜𝗡 𝗢𝗟𝗜𝗚𝗢𝗧𝗘𝗖𝗛 𝗡𝗢𝗪 👑", url: "https://t.me/OligoTech"}
+        ],
+        [
+          {text:  "𝗩𝗘𝗥𝗜𝗙𝗬 ✅️", callback_data: 'verify'}
         ]
       ]
       }
     };
-    bot.sendMessage(chatId, `🖐 Welcome ${userName} to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭\n\n Please click the button below 👇 to follow my community 🤗`, opts);
+    bot.sendMessage(chatId, `🖐 Welcome ${userName} to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭\n\n Please click the button below 👇 to follow my community in order to get access to my features🤗`, opts);
   }else if(userMsg === "/info"){
     bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n\n  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
   }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
