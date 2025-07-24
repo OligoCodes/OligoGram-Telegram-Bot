@@ -236,7 +236,7 @@ bot.on('callback_query', (query) => {
       }
     });
   }else if (data === 'tools'){
-    bot.editMessageText(`\n/whaspy   ⇒ Get WhatsApp profile pic 📱  \n/math  ⇒ Solve math expressions 🧠  \n/qr  ⇒ Create QR code 🔳 \n/pgen  ⇒ Generate secure passwords 🔐  \n/bots  ⇒ Access bot tools menu 🧰\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    bot.editMessageText(`\n/whaspy   ⇒ Get WhatsApp profile pic 📱  \n/math  ⇒ Solve math expressions 🧠  \n/qr  ⇒ Create QR code 🔳 \n/pgen  ⇒ Generate secure passwords 🔐  \n/bot  ⇒ Access bot tools menu 🧰\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
     {
       chat_id : chatId,
       message_id: msgId,
