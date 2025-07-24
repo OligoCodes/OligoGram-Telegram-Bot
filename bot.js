@@ -33,7 +33,7 @@ bot.on('message', async (msg) => {
   const isMember = await checkMembership(userId);
 
   
-  if (!userMsg || (chatType === 'channel') return; 
+  if (!userMsg || (chatType === 'channel')) return; 
   if (userMsg === "/start"){
     const opts = {
       reply_markup : {
