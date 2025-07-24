@@ -14,14 +14,26 @@ bot.on('message', (msg) => {
   const start = Date.now()
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-  const userId = msg.from.id;
   const chatType = msg.chat.type;
   const msgId = msg.message_id;
   const userFirstName = msg.from.first_name || "Seniorman";
   const userLastName = msg.from.last_name || "Seniorman";
   const userName = msg.from.username || "Seniorman";
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
-  if (!userMsg || (chatType === 'channel')) return; 
+  
+  if (!userMsg || (chatType === 'channel') || isMember) return; 
   if (userMsg === "/start"){
     const opts = {
       reply_markup : {
