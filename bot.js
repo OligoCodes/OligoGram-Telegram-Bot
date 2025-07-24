@@ -10,7 +10,7 @@ const bot = new TelegramBot(token, {polling : true});
 const oligoTechChannel = '@OligoTech'
 
 //messages
-bot.on('message', (msg) => {
+bot.on('message', async (msg) => {
   const start = Date.now()
   const chatId = msg.chat.id;
   const userMsg = msg.text;
