@@ -7,6 +7,8 @@ const token = process.env.token;
 
 const bot = new TelegramBot(token, {polling : true});
 
+const oligoTechChannel = '@OligoTech'
+
 //messages
 bot.on('message', (msg) => {
   const start = Date.now()
@@ -137,6 +139,33 @@ bot.on('message', (msg) => {
       bot.sendMessage(chatId,  `😂 ${userName},  what's funny?`)
   }
 });
+
+//recive channel member verification 
+bot.on('callback_query' , async (query) => {
+  const chatId = query.message.chat.id;
+  const userId = query.message.from.id;
+  const data = query.data;
+
+  if(data === 'verify'){
+    try{
+      const res = await bot.getChatMember(oligoTechChannel, userId);
+      const status = res.status;
+      const approvedRank = ['member','administrator', 'creator'];
+      if (approvedRank.includes(status){
+
+        bot.sendMessage(chatId,  `Congrats🎉👏`)
+        bot.emit("message", { chat : {id :chatId}, from: {id : userId}, text: '/help'}); 
+      }else{
+        bot.sendMessage(chatId,  `Please Join OLIGOTECH👨‍💻 and try again!!!`)
+      }
+      
+    }catch(e){
+      console.error('Verification Error: ', e)
+      bot.sendMessage(chatId, `🚫 Couldn't Verify your membership,  kindly join and try again`)
+    }
+  }
+    
+})
 
 //new menu
 bot.on('message' , (msg) => {
