@@ -49,7 +49,7 @@ bot.on('message', async (msg) => {
     };
     bot.sendMessage(chatId, `🖐 Welcome ${userName} to OligoGram Bot! your friendly Telegram Bot develped by Joseph Bonsu 🇬🇭\n\n Please click the button below 👇 to follow my community in order to get access to my features🤗`, opts);
   }else if(userMsg === "/info"){
-    bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n\n  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
+    bot.sendMessage(chatId, `╔⫷⫸⫷⫸⫷[⚡️INFO PULSE ]⫸⫷⫸⫷⫸◆\n║\n  ◈ /myInfo - Get your own info.\n║\n║  ◈ /botOwnerInfo - Know more about the bot creator.\n\n❂⊣ 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ⊢❂`);
   }else if(userMsg === "/ping" || userMsg === "/ping@oligogram_bot"){
     bot.sendMessage(chatId, `⏳️ Calculating ....`).then(() =>{
      const end = Date.now();
@@ -67,7 +67,7 @@ bot.on('message', async (msg) => {
         ]
       }
     }
-    bot.sendMessage(chatId, `⫸⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸⫷\n║\n ◈ Owner: 𝗝𝗼𝘀𝗲𝗽𝗵 𝗞𝘄𝗮𝗯𝗲𝗻𝗮 𝗢𝘀𝗲𝗶 𝗕𝗼𝗻𝘀𝘂(OligoCodes)\n ◈ Role: Developer & Architect 🤖\n ◈ Location: Kasoa, Ghana 🇬🇭\n ◈ Contact: https://t.me/OligoCodes\n\n.  📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `, buttons);
+    bot.sendMessage(chatId, `⫷⫷⫷[👑 BOT OWNER INFO ]⫸⫸⫸\n║\n ◈ Owner: 𝗝𝗼𝘀𝗲𝗽𝗵 𝗞𝘄𝗮𝗯𝗲𝗻𝗮 𝗢𝘀𝗲𝗶 𝗕𝗼𝗻𝘀𝘂(OligoCodes)\n║ ◈ Role: Developer & Architect 🤖\n║ ◈ Location: Kasoa, Ghana 🇬🇭\n║ ◈ Contact: https://t.me/OligoCodes\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `, buttons);
   }else if(userMsg === "/photo" || userMsg === "/photo@oligogram_bot"){
       const photoUrl = `https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&h=300`;
       const caption = {caption : `👾 Here is a photo 📸`};
@@ -102,7 +102,7 @@ bot.on('message', async (msg) => {
      }
      bot.sendMessage(chatId, `📊 Welcome ${userName} to the OligoTech Crypto Dashboard\n\nTrack real-time prices for the top cryptocurrencies, including Bitcoin, Ethereum, Solana, and more.\n\nTap any coin below to view its current market value.\n\n🔄 Data updates automatically | 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 `, croyce, {parse_mode: 'Markdown'});
   }else if(userMsg === "/math" || userMsg === "math@oligogram_bot"){
-      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║➕️ /add a+b ⇒ a plus b\n║➖️  /subt a-b ⇒ a minus b\n║✖️  /mul a×b ⇒ a multiplied by b\n║➗️  /div a÷b ⇒ a divided by b\n║〰️  /sqrt a ⇒ square root of a\n║➿️  /rem a&b ⇒ remainder of a/b\n║♻️  /round a ⇒ round a\n║🔃  /exp a^b ⇒ a to the power b\n║🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂` , {reply_to_message_id: msgId})
+      bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║ ➕️ /add a+b ⇒ a plus b\n║ ➖️  /subt a-b ⇒ a minus b\n║ ✖️  /mul a×b ⇒ a multiplied by b\n║ ➗️  /div a÷b ⇒ a divided by b\n║ 〰️  /sqrt a ⇒ square root of a\n║ ➿️  /rem a&b ⇒ remainder of a/b\n║ ♻️  /round a ⇒ round a\n║ 🔃  /exp a^b ⇒ a to the power b\n║ 🔯 /gen a(b÷c)+d ⇒ for general expressions\n║\n  📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭` , {reply_to_message_id: msgId})
   }else if(userMsg.startsWith('/add ')){
       const addition = userMsg.slice(5).trim();
       const add = eval(addition);
@@ -147,8 +147,8 @@ bot.on('message', async (msg) => {
       const correctSyntax = deal.replace(/[(]/g, "*(");
       const gen = eval(correctSyntax);
       bot.sendMessage(chatId,  `🔯 The answer is ${gen} 🔯`);
-  }else if(userMsg.includes('😂') || userMsg.includes('lol') || userMsg.includes('haha') || userMsg.includes('funny')){
-      bot.sendMessage(chatId,  `😂 ${userName},  what's funny?`)
+  }else if(userMsg.includes('😂') || userMsg.includes('lol') || userMsg.includes('haha') || userMsg.includes('funny') || userMsg.includes('LOL') || userMsg.includes('🤣')){
+      bot.sendMessage(chatId,  `😂 ${userName},  what's funny?`, {reply_to_message_id: msgId})
   }
 });
 
@@ -225,7 +225,7 @@ bot.on('callback_query', (query) => {
 
   if(!data || chatType === 'channel') return;
   if (data === 'basic'){
-    bot.editMessageText(`◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    bot.editMessageText(`\n◈ /start   - Start the bot 🤖  \n◈ /help   - Show this help message 🚸  \n◈ /ping   - Check bot’s response time 🎯  \n◈ /info   - Show user and bot owner info 👤  \n◈ /photo   - Send a particular photo 📸  \n◈ /sticker   - Send a crying sticker 🤣  \n◈ /alive   - Send the ping song ⏸️  \n◈ /ownerPic   - Show the bot programmer’s portrait 🤯👾\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
     {
       chat_id : chatId,
       message_id: msgId,
@@ -236,7 +236,7 @@ bot.on('callback_query', (query) => {
       }
     });
   }else if (data === 'tools'){
-    bot.editMessageText(`/whaspy   ⇒ Get WhatsApp profile pic 📱  \n/math  ⇒ Solve math expressions 🧠  \n/qr  ⇒ Create QR code 🔳 \n/pgen  ⇒ Generate secure passwords 🔐  \n/bots  ⇒ Access bot tools menu 🧰\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    bot.editMessageText(`\n/whaspy   ⇒ Get WhatsApp profile pic 📱  \n/math  ⇒ Solve math expressions 🧠  \n/qr  ⇒ Create QR code 🔳 \n/pgen  ⇒ Generate secure passwords 🔐  \n/bots  ⇒ Access bot tools menu 🧰\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
     {
       chat_id : chatId,
       message_id: msgId,
@@ -247,7 +247,7 @@ bot.on('callback_query', (query) => {
       }
     });
   }else if (data === 'data'){
-    bot.editMessageText(`/weather  ⇒ Get weather info 🌦️  \n/crypto  ⇒ Show cryptocurrency prices 💰  \n/qalc  ⇒ Quick calculator 🧮  \n/define  ⇒ Dictionary word definitions 📚  \n/Bible  ⇒ Fetch Bible verses ✝️\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, {
+    bot.editMessageText(`\n/weather  ⇒ Get weather info 🌦️  \n/crypto  ⇒ Show cryptocurrency prices 💰  \n/qalc  ⇒ Quick calculator 🧮  \n/define  ⇒ Dictionary word definitions 📚  \n/Bible  ⇒ Fetch Bible verses ✝️\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, {
       chat_id : chatId,
       message_id: msgId,
       reply_markup: {
@@ -257,7 +257,7 @@ bot.on('callback_query', (query) => {
       }
     });
   }else if (data === 'fun'){
-    bot.editMessageText(`/joke  ⇒ Sends a random joke 😂  \n/randomoji  ⇒ Sends a random emoji 🎲  \n/img  ⇒ Generate AI images 🖼️  \n/tokfetch  ⇒ Download TikTok video links 🎥\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
+    bot.editMessageText(`\n/joke  ⇒ Sends a random joke 😂  \n/randomoji  ⇒ Sends a random emoji 🎲  \n/img  ⇒ Generate AI images 🖼️  \n/tokfetch  ⇒ Download TikTok video links 🎥\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, 
     {
       chat_id : chatId,
       message_id: msgId,
@@ -419,7 +419,7 @@ bot.on('message', async (msg) => {
   
   if(!userMsg || chatType === 'channel' || !isMember) return;
   if(userMsg === '/define' || userMsg === '/define@oligogram_bot'){
-  bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n /define <word> e.g Oligo\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
+  bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n /define <word> \n║ e.g Oligo\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
   }else if(userMsg.startsWith('/define ')){
     const word = userMsg.slice(8).trim();
     if(!word){
@@ -479,7 +479,7 @@ bot.on('message', async (msg) => {
   
 if(!userMsg || chatType === 'channel' || !isMember) return;
 if(userMsg === '/Bible' || userMsg === '/Bible@oligogram_bot'){
-  bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║ /bible Book Chapter:Verse e.g John 3:16\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
+  bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n /Bible (Book Chapter:Verse)\n║  e.g John 3:16\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
  }else if (userMsg.startsWith('/Bible ')) {
     const verse = userMsg.slice(7).trim(); // e.g., 'john 3:16'
     try{
@@ -537,7 +537,7 @@ bot.on('message', async (msg) => {
        const imageUrl = response.data.urls.regular;
        const author = response.data.user.name;
 
-       bot.sendPhoto(chatId, imageUrl, {caption: `📸 Here is your ${imageName} image\n> Image by: _${author}_\n❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`, parse_mode: 'Markdown'});
+       bot.sendPhoto(chatId, imageUrl, {caption: `║ 📸 Here is your ${imageName} image\n║ 🔅 *Image by* : ${author}\\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, parse_mode: 'Markdown'});
     }catch(err){
        console.error("Error: ", err);
        bot.sendMessage(chatId, '❌ Image not found. Please check the image name and try again.');
@@ -578,12 +578,12 @@ bot.on('message' , async (msg) => {
 
   if (!userMsg || (chatType === 'channel') || !isMember) return; 
   if(userMsg === '/qr' || userMsg === "/qr@oligogram_bot"){
-    bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n  👨‍💻 Type /qr <anytext>\n   (eg. /qr OligoCodes)\n\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
+    bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n  👨‍💻 Type /qr <anytext>\n║   (eg. /qr OligoCodes)\n\n  📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`)
   }else if(userMsg.startsWith('/qr ')){
     const text = userMsg.slice(4);
     const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(text)}&size=300x300`;
       
-    bot.sendPhoto(chatId, qrUrl, {caption: `🔳 Your QR code is ready\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, reply_to_message_id: msgId}).catch(error => {
+    bot.sendPhoto(chatId, qrUrl, {caption: `║ 🔳 Your QR code is ready\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`, reply_to_message_id: msgId}).catch(error => {
       console.error('Error ', error.message);
       bot.sendMessage(chatId,  `🚫 Could not generate QR Code.`)
     })
@@ -626,8 +626,8 @@ bot.on('message', async (msg) => {
       const randome = Math.floor(Math.random() * stickers.length)
       const stickerId = stickers[randome]
 
-      bot.sendMessage(chatId, `Preparing *${type}* joke 😃 ...`, {parse_mode : 'Markdown'});
-      bot.sendMessage(chatId, `        🤡 𝗝𝗢𝗞𝗘 𝗣𝗨𝗟𝗦𝗘\n\n*${setup}*...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ` , {parse_mode: 'Markdown' , reply_to_message_id : msgId});
+      bot.sendMessage(chatId, `Preparing *${type.toUpperCase()}* joke 😃 ...`, {parse_mode : 'Markdown'});
+      bot.sendMessage(chatId, `        🤡 𝗝𝗢𝗞𝗘 𝗣𝗨𝗟𝗦𝗘\n\n*${setup}*...\n\n ${jokeEmoji} ${joke} ${jokeEmoji}\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭 ` , {parse_mode: 'Markdown' , reply_to_message_id : msgId});
       bot.sendSticker(chatId, `${stickerId}`);
         
       }catch(e){
