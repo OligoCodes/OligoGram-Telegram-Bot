@@ -151,7 +151,7 @@ bot.on('callback_query' , async (query) => {
       const res = await bot.getChatMember(oligoTechChannel, userId);
       const status = res.status;
       const approvedRank = ['member','administrator', 'creator'];
-      if (approvedRank.includes(status){
+      if (approvedRank.includes(status)){
 
         bot.sendMessage(chatId,  `Congrats🎉👏`)
         bot.emit("message", { chat : {id :chatId}, from: {id : userId}, text: '/help'}); 
