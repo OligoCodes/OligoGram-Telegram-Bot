@@ -33,7 +33,7 @@ bot.on('message', async (msg) => {
   const isMember = await checkMembership(userId);
 
   
-  if (!userMsg || (chatType === 'channel') || isMember) return; 
+  if (!userMsg || (chatType === 'channel') || !isMember) return; 
   if (userMsg === "/start"){
     const opts = {
       reply_markup : {
@@ -180,12 +180,25 @@ bot.on('callback_query' , async (query) => {
 })
 
 //new menu
-bot.on('message' , (msg) => {
+bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
-  if(!userMsg || chatType === 'channel') return;
+
+  if(!userMsg || chatType === 'channel' || !isMember) return;
   if (userMsg === '/help'){
     const message = `🤖 𝗔𝗹𝗹-𝗶𝗻-𝗢𝗻𝗲 𝗕𝗼𝘁 𝗠𝗲𝗻𝘂\n\nExplore commands by category: Basics, Fun, Tools, or Data.\n\nTap a button below to begin.\n\n📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`;
     const buttons = {
@@ -278,12 +291,26 @@ bot.on('callback_query', (query) => {
 
 
 //projects mine
-bot.on('message' , (msg) => {
+bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
-  if(!userMsg || chatType === 'channel') return;
+  
+
+  if(!userMsg || chatType === 'channel' || !isMember) return;
   if(userMsg === '/whaspy' || userMsg === '/whaspy @oligogram_bot'){
     const message = '🔹 WHASPY\n\n👤 View any WhatsApp profile picture by number.\n🔧 Developed by 𝗝𝗼𝘀𝗲𝗽𝗵 𝗕𝗼𝗻𝘀𝘂 🇬🇭';
     const button = {
@@ -376,8 +403,21 @@ bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
+
   
-  if(!userMsg || chatType === 'channel') return;
+  if(!userMsg || chatType === 'channel' || !isMember) return;
   if(userMsg === '/define' || userMsg === '/define@oligogram_bot'){
   bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n /define <word> e.g Oligo\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
   }else if(userMsg.startsWith('/define ')){
@@ -423,8 +463,21 @@ bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
+
   
-if(!userMsg || chatType === 'channel') return;
+if(!userMsg || chatType === 'channel' || !isMember) return;
 if(userMsg === '/Bible' || userMsg === '/Bible@oligogram_bot'){
   bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║ /bible Book Chapter:Verse e.g John 3:16\n\n 📡 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗢𝗹𝗶𝗴𝗼𝗧𝗲𝗰𝗵 🇬🇭`);
  }else if (userMsg.startsWith('/Bible ')) {
@@ -451,8 +504,21 @@ bot.on('message', async (msg) => {
    const chatId = msg.chat.id;
    const userMsg = msg.text;
    const chatType = msg.chat.type;
+   const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
-   if (!userMsg || (chatType === 'channel')) return; 
+
+   if (!userMsg || (chatType === 'channel') || !isMember) return; 
    if(userMsg === '/img' || userMsg === "/img@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /img <imagename>\n║   (eg. /img skyscraper)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
     }else if(userMsg.startsWith('/img ')){
@@ -491,13 +557,26 @@ bot.on('callback_query' , (query) => {
 })
 
 //qr codes
-bot.on('message' , (msg) => {
+bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
   const chatType = msg.chat.type;
   const msgId = msg.message_id;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
-  if (!userMsg || (chatType === 'channel')) return; 
+
+  if (!userMsg || (chatType === 'channel') || !isMember) return; 
   if(userMsg === '/qr' || userMsg === "/qr@oligogram_bot"){
     bot.sendMessage(chatId,  `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n  👨‍💻 Type /qr <anytext>\n   (eg. /qr OligoCodes)\n\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`)
   }else if(userMsg.startsWith('/qr ')){
@@ -518,8 +597,21 @@ bot.on('message', async (msg) => {
   const userMsg = msg.text;
   const chatType = msg.chat.type;
   const msgId = msg.message_id;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
-  if (!userMsg || (chatType === 'channel')) return; 
+
+  if (!userMsg || (chatType === 'channel') || !isMember) return; 
   if(userMsg === '/joke' || userMsg === "/joke@oligogram_bot"){
       try{
       const response = await axios.get('https://official-joke-api.appspot.com/random_joke');
@@ -550,10 +642,23 @@ bot.on('message', async (msg) => {
 bot.on('message' , async (msg) => {
   const chatId = msg.chat.id;
   const userMsg = msg.text;
-const chatType = msg.chat.type;
+  const chatType = msg.chat.type;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
 
-  if (!userMsg || (chatType === 'channel')) return; 
+
+  if (!userMsg || (chatType === 'channel') || !isMember) return; 
   if(userMsg === '/weather' || userMsg === "/weather@oligogram_bot"){
       bot.sendMessage(chatId, `╔⫷⫷⫷[👑 COMMAND INFO ]⫸⫸⫸◆\n║\n║  👨‍💻 Type /weather <cityname>\n║   (eg. /weather Kasoa)\n║\n║\n ❂⊣꧁✟ 𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝒃𝒚 𝑶𝒍𝒊𝒈𝒐𝑻𝒆𝒄𝒉 🇬🇭✟꧂⊢❂`);
   }else if(userMsg.startsWith('/weather ')){
@@ -668,8 +773,21 @@ bot.on('message' , async(msg) => {
   const chatId = msg.chat.id;
   const msgId = msg.message_id;
   const chatType = msg.chat.type;
+  const userId = msg.from.id;
+  const checkMembership = async (userId) => {
+  try {
+    const res = await bot.getChatMember(oligoTechChannel, userId);
+    const status = res.status;
+    return ['member', 'administrator', 'creator'].includes(status);
+  } catch (error) {
+    console.error("Error checking membership:", error);
+    return false; // Assume not a member on error
+  }
+};
+  const isMember = await checkMembership(userId);
 
-  if(msg.from?.is_bot) return;
+  
+  if(msg.from?.is_bot ||!isMember) return;
   try{
     const response = await axios.post(`https://api.telegram.org/bot${token}/setMessageReaction` , {
       chat_id: chatId,
