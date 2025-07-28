@@ -154,7 +154,7 @@ bot.on('message', async (msg) => {
   }
 });
 
-//recive channel member verification 
+//receive channel member verification 
 bot.on('callback_query' , async (query) => {
   const chatId = query.message.chat.id;
   const userId = query.message.from.id;
